@@ -1,19 +1,8 @@
 <h1 align="center">:link: Devops Project :link:</h1>
 
-<p align="center">
+[![Generic badge](https://img.shields.io/badge/Contributors-3-green.svg)](https://shields.io/) [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/MathisLeRoyNivot/devops-project/blob/master/LICENSE)
 
-[![Generic badge](https://img.shields.io/badge/Contributors-3-green.svg)](https://shields.io/)
-
-[![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/MathisLeRoyNivot/devops-project/blob/master/LICENSE)
-
-</p>
-
-<p align="center">
-
-[![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://forthebadge.com)
-
-</p>
-
+[![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](https://forthebadge.com)
 
 ## Contributors :computer:
 
