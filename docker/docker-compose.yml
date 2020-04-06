@@ -1,0 +1,22 @@
+version: '3'
+services:
+  automate1: 
+    build: ./docker/automate
+    ports:
+      - "3000:3000"
+  automate2: 
+    build: ./docker/automate
+    ports:
+      - "3001:3001"
+  automate3: 
+    build: ./docker/automate
+    ports:
+      - "3002:3002"
+  automate4: 
+    build: ./docker/automate
+    ports:
+      - "3003:3003"
+  automate5: 
+    build: ./docker/automate
+    ports:
+      - "3004:3004"
