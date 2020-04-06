@@ -192,8 +192,7 @@ def main():
     with open(json_file_name, "w") as json_file:
         json.dump(generated_data, json_file, ensure_ascii=False, indent=4)
 
-    print(json_file_name)
-    # print(generated_data)
+    print("File exported with name : " + json_file_name)
 
 if __name__ == "__main__":
     main()
