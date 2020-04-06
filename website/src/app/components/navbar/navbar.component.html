@@ -1,7 +1,7 @@
 <div class="navbar">
     <nav class="nav-top">
         <div class="nt-left">
-            <i class="eva eva-menu-2-outline"></i>
+            <i id="nav-btn" class="eva eva-menu-2-outline"></i>
             <h1 class="ntl-title">Au Bon Beurre</h1>
         </div>
         <div class="nt-right">
@@ -10,6 +10,10 @@
             </div>
         </div>
     </nav>
-    <nav class="nav-side"></nav>
+    <nav id="nav-slide" class="nav-side hidden">
+        <a class="ns-item" *ngFor="let item of items" routerLink="{{item.link}}">
+            <i class="eva eva-{{item.icon}}"></i>
+            <span [innerHTML]="item.label"></span>
+        </a>
+    </nav>
 </div>
-

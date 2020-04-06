@@ -6,11 +6,13 @@
 
     .nav-top {
         display: flex;
+        position: absolute;
         justify-content: space-between;
         background-color: $white;
         box-shadow: 0 .5rem 1rem 0 rgba(44,51,73,.1);
         height: 75px;
         width: 100vw;
+        z-index: 2;
 
         .nt-left,
         .nt-right {
@@ -26,11 +28,23 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                color: $text;
+                color: $text_light;
                 font-size: 1.75rem; 
-                margin: auto;
                 height: 50px;
                 width: 50px;
+                transition: color 0.3s;
+
+                &:hover {
+                    cursor: pointer;
+                    color: $text_deep;
+                    transition: color 0.3s;
+                }
+            }
+
+            h1 {
+                text-transform: uppercase;
+                font-size: 1.5rem;
+                font-weight: 400;
             }
         }
 
@@ -47,5 +61,50 @@
         }
 
         
+    }
+
+    .nav-side {
+        background-color: $white;
+        box-shadow: 0 .5rem 1rem 0 rgba(44,51,73,.1);
+        position: fixed;
+        padding-top: 75px;
+        left: 0;
+        height: 100vh;
+        width: 250px;
+        transition: 0.6s;
+        z-index: 1;
+
+        .ns-item {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            color: $text_deep;
+            padding: 20px;
+            border-bottom: 1px solid $light_grey;
+            transition: color 0.3s;
+            text-decoration: none;
+
+            &:hover {
+                color: $blue;
+                transition: color 0.3s;
+                cursor: pointer;
+
+                i {
+                    color: $blue;
+                    transition: color 0.3s;
+                }
+            }
+
+            i {
+                color: $text_light;
+                margin: 0 10px;
+                transition: color 0.3s;
+            }
+        }
+
+        &.hidden {
+            left: -250px;
+            transition: 0.6s;
+        }
     }
 }
