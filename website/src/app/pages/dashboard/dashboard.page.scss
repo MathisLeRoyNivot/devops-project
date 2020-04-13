@@ -1,0 +1,67 @@
+@import 'src/styles/main';
+
+.page-layout {
+    margin-top: 75px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 250px;
+
+    height: 100%;
+    width: 100%;
+
+    .pl-card {
+        background-color: #FFFFFF;
+        border: .0625rem solid #e4e9f2;
+        border-radius: 10px;
+        margin: 20px;
+
+        &.finished-products {
+            grid-column-start: 1; 
+            grid-column-end: 3; 
+            grid-row-start: 1; 
+            grid-row-end: 2;
+        }
+
+        &.sold-products {
+            grid-column-start: 3; 
+            grid-column-end: 5; 
+            grid-row-start: 1; 
+            grid-row-end: 2;
+        }
+
+        &.tanks-temperatures {
+            grid-column-start: 1; 
+            grid-column-end: 5; 
+            grid-row-start: 2; 
+            grid-row-end: 4;
+        }
+
+        &.ph-rate {
+            grid-column-start: 1; 
+            grid-column-end: 2; 
+            grid-row-start: 4; 
+            grid-row-end: 6;
+        }
+
+        &.salmonella-level {
+            grid-column-start: 2; 
+            grid-column-end: 5; 
+            grid-row-start: 4; 
+            grid-row-end: 5;
+        }
+
+        &.ecoli-level {
+            grid-column-start: 2; 
+            grid-column-end: 5; 
+            grid-row-start: 5; 
+            grid-row-end: 6;
+        }
+
+        &.listeria-level {
+            grid-column-start: 2; 
+            grid-column-end: 5; 
+            grid-row-start: 6; 
+            grid-row-end: 7;
+        }
+    }
+}
