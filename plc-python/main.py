@@ -144,7 +144,7 @@ class UnitProduction:
 
 
 def generateType(automaton):
-    return hex(automaton)
+    return automaton.to_bytes(2, "big").hex()
 
 
 def generateRandomData(min, max, step):
