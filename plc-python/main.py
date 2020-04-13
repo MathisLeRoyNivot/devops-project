@@ -1,7 +1,6 @@
 import os
 import json
 import random
-import numpy
 from datetime import datetime
 from sys import argv
 
@@ -10,10 +9,10 @@ AUTOMATON_QTY = int(argv[2])
 generated_data = list()
 
 class UnitProduction:
-    def __init__(self, unit_num, plc_num, plc_type, tank_temp, outside_temp, milk_weight, final_product_weight, ph, potassium, sodium_chlorure_concentration, salmonella_lvl, e_coli_lvl, listeria_lvl):
+    def __init__(self, unit_num, automaton_num, automaton_type, tank_temp, outside_temp, milk_weight, final_product_weight, ph, potassium, sodium_chlorure_concentration, salmonella_lvl, e_coli_lvl, listeria_lvl):
         self._unit_num = unit_num
-        self._plc_num = plc_num
-        self._plc_type = plc_type
+        self._automaton_num = automaton_num
+        self._automaton_type = automaton_type
         self._tank_temp = tank_temp
         self._outside_temp = outside_temp
         self._milk_weight = milk_weight
@@ -34,23 +33,23 @@ class UnitProduction:
     def setUnitNum(self, value):
         self._unit_num = value
 
-    # plc_num Getter & Setter
+    # automaton_num Getter & Setter
     @property
-    def plcNum(self):
-        return self._plc_num
+    def automatonNum(self):
+        return self._automaton_num
 
-    @plcNum.setter
-    def setPlcNum(self, value):
-        self._plc_num = value
+    @automatonNum.setter
+    def setAutomatonNum(self, value):
+        self._automaton_num = value
 
-    # plc_type Getter & Setter
+    # automaton_type Getter & Setter
     @property
-    def plcType(self):
-        return self._plc_type
+    def automatonType(self):
+        return self._automaton_type
 
-    @plcType.setter
-    def setplctype(self, value):
-        self._plc_type = value
+    @automatonType.setter
+    def setAutomatontype(self, value):
+        self._automaton_type = value
 
     # tank_temp Getter & Setter
     @property
@@ -144,47 +143,48 @@ class UnitProduction:
 
 
 def generateType(automaton):
-    return automaton.to_bytes(2, "big").hex()
+    type = automaton.to_bytes(2, "big").hex()
+    return type
 
 
 def generateRandomData(min, max, step):
     return random.randrange(min, max, step)
 
 
-def generateRandomDataFloat(min, max, step):
-    return round(random.choice(numpy.arange(min, max, step)), 2)
+def generateRandomDataFloat(min, max):
+    return round(random.uniform(min, max), 1)
 
 def main():
 
     for automaton in range(1, AUTOMATON_QTY + 1):
-        plc_type = generateType(automaton)
-        tank_temp = generateRandomDataFloat(2.5, 4, 0.1)
-        outside_temp = generateRandomDataFloat(8, 14, 0.1)
+        automaton_type = generateType(automaton)
+        tank_temp = generateRandomDataFloat(2.5, 4)
+        outside_temp = generateRandomDataFloat(8, 14)
         milk_weigth = generateRandomData(3512, 4607, 1)
         final_product_weight = generateRandomData(3512, 4607, 1) # Need to be fixed
-        ph = generateRandomDataFloat(6.8, 7.2, 0.1)
+        ph = generateRandomDataFloat(6.8, 7.2)
         potassium = generateRandomData(35, 47, 1)
-        sodium_chlorure_concentration = generateRandomDataFloat(1, 1.7, 0.1)
+        sodium_chlorure_concentration = generateRandomDataFloat(1, 1.7)
         salmonella_level = generateRandomData(17, 31, 1)
         e_coli_level = generateRandomData(35, 49, 1)
         listeria_level = generateRandomData(28, 54, 1)
 
-        data = UnitProduction(UNIT_NUM, automaton, plc_type, tank_temp, outside_temp, milk_weigth, final_product_weight, ph, potassium, sodium_chlorure_concentration, salmonella_level, e_coli_level, listeria_level)
+        unit = UnitProduction(UNIT_NUM, automaton, automaton_type, tank_temp, outside_temp, milk_weigth, final_product_weight, ph, potassium, sodium_chlorure_concentration, salmonella_level, e_coli_level, listeria_level)
         
         formated_data = dict()
-        formated_data["unit_num"] = data.unitNum
-        formated_data["plc_num"] = data.plcNum
-        formated_data["plc_type"] = data.plcType
-        formated_data["tank_temp"] = data.tankTemp
-        formated_data["outside_temp"] = data.outsideTemp
-        formated_data["milk_weigth"] = data.milkWeight
-        formated_data["final_product_weight"] = data.finalProductWeight
-        formated_data["ph"] = data.pH
-        formated_data["potassium"] = data.potassium
-        formated_data["sodium_chlorure_concentration"] = data.sodiumChlorureConcentration
-        formated_data["salmonella_level"] = data.salmonellaLevel
-        formated_data["e_coli_level"] = data.eColiLevel
-        formated_data["listeria_level"] = data.listeriaLevel
+        formated_data["unit_num"] = unit.unitNum
+        formated_data["automaton_num"] = unit.automatonNum
+        formated_data["automaton_type"] = unit.automatonType
+        formated_data["tank_temp"] = unit.tankTemp
+        formated_data["outside_temp"] = unit.outsideTemp
+        formated_data["milk_weigth"] = unit.milkWeight
+        formated_data["final_product_weight"] = unit.finalProductWeight
+        formated_data["ph"] = unit.pH
+        formated_data["potassium"] = unit.potassium
+        formated_data["sodium_chlorure_concentration"] = unit.sodiumChlorureConcentration
+        formated_data["salmonella_level"] = unit.salmonellaLevel
+        formated_data["e_coli_level"] = unit.eColiLevel
+        formated_data["listeria_level"] = unit.listeriaLevel
         generated_data.append(formated_data)
 
     unix_date = datetime.utcnow().strftime("%s")
