@@ -144,7 +144,7 @@ class UnitProduction:
 
 
 def generateType(automaton):
-    return ""
+    return hex(automaton)
 
 
 def generateRandomData(min, max, step):
@@ -188,7 +188,7 @@ def main():
         generated_data.append(formated_data)
 
     unix_date = datetime.utcnow().strftime("%s")
-    json_file_name = "{}_{}_{}.json".format("test", UNIT_NUM, unix_date)
+    json_file_name = "{}_{}_{}.json".format("paramunite", UNIT_NUM, unix_date)
 
     with open(json_file_name, "w") as json_file:
         json.dump(generated_data, json_file, ensure_ascii=False, indent=4)
