@@ -1,13 +1,14 @@
 @import 'src/styles/main';
 
 .page-layout {
-    margin-top: 75px;
+    margin: 75px auto auto auto;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: 250px;
+    grid-auto-rows: 300px;
 
     height: 100%;
     width: 100%;
+    max-width: 1600px;
 
     .pl-card {
         background-color: #FFFFFF;
@@ -45,23 +46,23 @@
 
         &.salmonella-level {
             grid-column-start: 2; 
-            grid-column-end: 5; 
+            grid-column-end: 3; 
             grid-row-start: 4; 
             grid-row-end: 5;
         }
 
         &.ecoli-level {
-            grid-column-start: 2; 
-            grid-column-end: 5; 
-            grid-row-start: 5; 
-            grid-row-end: 6;
+            grid-column-start: 3; 
+            grid-column-end: 4; 
+            grid-row-start: 4; 
+            grid-row-end: 5;
         }
 
         &.listeria-level {
-            grid-column-start: 2; 
+            grid-column-start: 4; 
             grid-column-end: 5; 
-            grid-row-start: 6; 
-            grid-row-end: 7;
+            grid-row-start: 4; 
+            grid-row-end: 5;
         }
 
         .plc-chart {

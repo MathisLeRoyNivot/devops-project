@@ -36,6 +36,33 @@
         </div>
     </div>
     <div class="pl-card ph-rate">PH Rate</div>
-    <div class="pl-card salmonella-level">Salmonella Rate</div>
-    <div class="pl-card ecoli-level">E-coli Rate</div>
-    <div class="pl-card listeria-level">Listeria</div>
+    <div class="pl-card salmonella-level">
+        <div class="plc-chart">
+            <canvas baseChart 
+                    [datasets]="plcslData"
+                    [labels]="plcslLabels"
+                    [options]="plcslOptions"
+                    [chartType]="plcslType">
+            </canvas>
+        </div>
+    </div>
+    <div class="pl-card ecoli-level">
+        <div class="plc-chart">
+            <canvas baseChart 
+                    [datasets]="plcelData"
+                    [labels]="plcelLabels"
+                    [options]="plcelOptions"
+                    [chartType]="plcelType">
+            </canvas>
+        </div>
+    </div>
+    <div class="pl-card listeria-level">
+        <div class="plc-chart">
+            <canvas baseChart 
+                    [datasets]="plcllData"
+                    [labels]="plcllLabels"
+                    [options]="plcllOptions"
+                    [chartType]="plcllType">
+            </canvas>
+        </div>
+    </div>
