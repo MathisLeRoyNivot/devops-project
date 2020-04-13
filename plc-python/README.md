@@ -11,7 +11,37 @@ Programmable Logic Controller (**PLC**)
 
 </h2>
 
-## Documentations 
+## Installation
+
+### **Build image**
+
+```docker
+docker build -t <image_name> .
+```
+
+Example :
+
+```docker
+docker build -t plc-python .
+```
+
+### **Run image**
+
+> Run image by passing two additional arguments, the **unit number** and the **automaton quantity** per unit
+
+```docker
+docker run <image_name> <UNIT_NUM> <AUTOMATON_QTY>
+```
+
+Example :
+> Run the built image named *plc-python* with unit #1 and 10 automatons for this unit
+
+```docker
+docker run plc-python 1 10
+```
+
+## Documentations
+
 - [**General project's documentation**](https://github.com/MathisLeRoyNivot/devops-project "Go to general project's documentation")
 
 ## Contributors :computer:

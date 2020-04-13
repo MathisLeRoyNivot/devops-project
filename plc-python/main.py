@@ -3,9 +3,10 @@ import json
 import random
 import numpy
 from datetime import datetime
+from sys import argv
 
-UNIT_NUM = 1
-AUTOMATON_QTY = 10
+UNIT_NUM = int(argv[1])
+AUTOMATON_QTY = int(argv[2])
 generated_data = list()
 
 class UnitProduction:
@@ -186,13 +187,14 @@ def main():
         formated_data["listeria_level"] = data.listeriaLevel
         generated_data.append(formated_data)
 
-    unix_date = datetime.utcnow().timestamp()
+    unix_date = datetime.utcnow().strftime("%s")
     json_file_name = "{}_{}_{}.json".format("test", UNIT_NUM, unix_date)
 
     with open(json_file_name, "w") as json_file:
         json.dump(generated_data, json_file, ensure_ascii=False, indent=4)
 
     print("File exported with name : " + json_file_name)
+
 
 if __name__ == "__main__":
     main()
