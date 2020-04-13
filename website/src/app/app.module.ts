@@ -8,6 +8,7 @@ import { DashboardPage } from './pages/dashboard/dashboard.page';
 import { ProductionUnitsPage } from './pages/production-units/production-units.page';
 import { AlertsPage } from './pages/alerts/alerts.page';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -16,11 +17,12 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     DashboardPage,
     ProductionUnitsPage,
     AlertsPage,
-    NavbarComponent
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ChartsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
