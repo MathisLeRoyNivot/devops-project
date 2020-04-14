@@ -1,7 +1,6 @@
 import os
 import json
 import random
-import numpy
 from datetime import datetime
 from sys import argv
 
@@ -151,20 +150,20 @@ def generateRandomData(min, max, step):
     return random.randrange(min, max, step)
 
 
-def generateRandomDataFloat(min, max, step):
-    return round(random.choice(numpy.arange(min, max, step)), 2)
+def generateRandomDataFloat(min, max):
+    return round(random.uniform(min, max), 1)
 
 def main():
 
     for automaton in range(1, AUTOMATON_QTY + 1):
         plc_type = generateType(automaton)
-        tank_temp = generateRandomDataFloat(2.5, 4, 0.1)
-        outside_temp = generateRandomDataFloat(8, 14, 0.1)
+        tank_temp = generateRandomDataFloat(2.5, 4)
+        outside_temp = generateRandomDataFloat(8, 14)
         milk_weigth = generateRandomData(3512, 4607, 1)
         final_product_weight = generateRandomData(3512, 4607, 1) # Need to be fixed
-        ph = generateRandomDataFloat(6.8, 7.2, 0.1)
+        ph = generateRandomDataFloat(6.8, 7.2)
         potassium = generateRandomData(35, 47, 1)
-        sodium_chlorure_concentration = generateRandomDataFloat(1, 1.7, 0.1)
+        sodium_chlorure_concentration = generateRandomDataFloat(1, 1.7)
         salmonella_level = generateRandomData(17, 31, 1)
         e_coli_level = generateRandomData(35, 49, 1)
         listeria_level = generateRandomData(28, 54, 1)
