@@ -33,9 +33,9 @@ export class NavbarComponent implements OnInit {
 				link: "/production-units"
 			},
 			{
-				label: "Alerts",
-				icon: "alert-circle-outline",
-				link: "/alerts"
+				label: "PDF",
+				icon: "archive-outline",
+				link: "/pdf"
 			}
 		]
 

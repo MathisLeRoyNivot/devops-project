@@ -1,0 +1,35 @@
+<div class="automaton-layout">
+
+    <div class="al-card tank-temperature">
+        <div class="alc-chart">
+            <canvas baseChart 
+                    [datasets]="alcttData"
+                    [labels]="alcttLabels"
+                    [options]="alcttOptions"
+                    [plugins]="alcttPlugins"
+                    [legend]="alcttLegend"
+                    [chartType]="alcttType">
+            </canvas>
+        </div>
+    </div>
+    <div class="al-card main-temperature">
+        <div class="alc-chart">
+            <canvas baseChart 
+                    [datasets]="alcmtData"
+                    [labels]="alcmtLabels"
+                    [options]="alcmtOptions"
+                    [plugins]="alcmtPlugins"
+                    [legend]="alcmtLegend"
+                    [chartType]="alcmtType">
+            </canvas>
+        </div>
+    </div>
+    <div class="al-card milk-weight">3</div>
+    <div class="al-card finished-product-weight">4</div>
+    <div class="al-card ph">5</div>
+    <div class="al-card potassium">6</div>
+    <div class="al-card nacl">7</div>
+    <div class="al-card salmonella">8</div>
+    <div class="al-card ecoli">9</div>
+    <div class="al-card listeria">10</div>
+</div>

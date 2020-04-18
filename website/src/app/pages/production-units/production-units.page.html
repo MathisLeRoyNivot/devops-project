@@ -1,1 +1,8 @@
-<p>production-units works!</p>
+<div class="page-layout">
+    <div class="pl-units">
+        <button *ngFor="let unit of units" class="pl-card plu-btn" id="unit-{{unit}}" [routerLink]="['/production-units', unit]">
+            Unit {{unit}}
+        </button>
+    </div>
+    <router-outlet></router-outlet>
+</div>

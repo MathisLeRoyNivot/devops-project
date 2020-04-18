@@ -3,17 +3,16 @@
 .page-layout {
     margin: 75px auto auto auto;
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-auto-rows: 100px;
 
     height: 100%;
     width: 100%;
     max-width: 1600px;
 
-
-    .pl-units {
+    .pl-automaton {
         display: grid;
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(10, 1fr);
         grid-auto-rows: 100px;
         grid-column: 1 / 6;
         grid-row: 1 / 2;
@@ -24,7 +23,7 @@
             border-radius: 10px;
             margin: 20px;
     
-            &.plu-btn {
+            &.pla-btn {
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -40,10 +39,8 @@
         }
     }
 
-    ::ng-deep app-unit {
+    ::ng-deep app-automaton {
         grid-column: 1 / 6;
-        grid-row: 1 / 20;
+        grid-row-start: 2;
     }
-
-    
 }

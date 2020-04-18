@@ -3,7 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginPage } from './pages/login/login.page';
 import { DashboardPage } from './pages/dashboard/dashboard.page';
 import { ProductionUnitsPage } from './pages/production-units/production-units.page';
-import { AlertsPage } from './pages/alerts/alerts.page';
+import { PdfPage } from './pages/pdf/pdf.page';
+import { UnitComponent } from './components/unit/unit.component';
+import { AutomatonComponent } from './components/automaton/automaton.component';
 
 
 const routes: Routes = [
@@ -25,11 +27,31 @@ const routes: Routes = [
 	{
 		path: 'production-units',
 		component: ProductionUnitsPage,
-		pathMatch: 'full'
+		pathMatch: 'full',
 	},
 	{
-		path: 'alerts',
-		component: AlertsPage,
+		path: 'production-units/:unit_id',
+		component: ProductionUnitsPage,
+		children: [
+			{
+				path: '',
+				component: UnitComponent
+			},
+			{
+				path: ':automaton_id',
+				component: UnitComponent,
+				children: [
+					{
+						path: '',
+						component: AutomatonComponent
+					},
+				]
+			}
+		]
+	},
+	{
+		path: 'pdf',
+		component: PdfPage,
 		pathMatch: 'full'
 	}
 ];
