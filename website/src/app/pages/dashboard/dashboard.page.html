@@ -35,7 +35,18 @@
             </canvas>
         </div>
     </div>
-    <div class="pl-card ph-rate">PH Rate</div>
+    <div class="pl-card ph-rate">
+        <h1>PH Rate</h1>
+        <div class="plcpr-wrapper">
+            <div class="plcprw-item" *ngFor="let item of plcprData;let index = index">
+                <h2>Unit {{index + 1}}</h2>
+                <div class="plcprwi-automaton" *ngFor="let automaton of item">
+                    <p>{{automaton.name}}</p>
+                    <p>{{automaton.ph}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="pl-card salmonella-level">
         <div class="plc-chart">
             <canvas baseChart 

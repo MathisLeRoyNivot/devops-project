@@ -20,7 +20,7 @@ export class DashboardPage implements OnInit {
 			pointHoverBorderColor: '#00d58e'
 		}
 	];
-	public plcfpLabels: Label[] = [ '18h10', '18h20', '18h30', '18h40', '18h50', '19h00', '19h10' ];
+	public plcfpLabels: Label[];
 	public plcfpOptions: ChartOptions = {
 		responsive: true,
 		maintainAspectRatio: false,
@@ -30,8 +30,9 @@ export class DashboardPage implements OnInit {
 	public plcfpType = 'line';
 	public plcfpPlugins = [];
 
+
 	// Sold Products
-	public plcspData: SingleDataSet = [ 100, 500, 300 ];
+	public plcspData: SingleDataSet;
 	public plcspLabels: Label[] = [ [ 'Cheese' ], [ 'Milk' ], 'Butter' ];
 	public plcspOptions: ChartOptions = {
 		responsive: true,
@@ -44,6 +45,7 @@ export class DashboardPage implements OnInit {
 	public plcspType: ChartType = 'pie';
 	public plcspLegend = true;
 	public plcspPlugins = [];
+
 
 	// Tanks Temperatures
 	public plcttData: ChartDataSets[] = [
@@ -310,9 +312,256 @@ export class DashboardPage implements OnInit {
 	};
 	public plcllType: ChartType = 'radar';
 
+	public plcprData: Array<any>;
+
 	constructor() {}
 
 	ngOnInit(): void {
+
+		// Set Variables
+
+		// Finished Products
+		this.plcfpLabels = [ '18h10', '18h20', '18h30', '18h40', '18h50', '19h00', '19h10' ];
+		this.plcfpData[0].data = [ 26, 30, 50, 34, 45, 32, 10 ];
+
+		// Sold Products
+		this.plcspData = [ 100, 500, 300 ];
+
+		// Tanks Temperatures
+		this.plcttData[0].data = [ 2.6, 2.8, 3.4, 3.1, 2.4 ]; // Automatons 1
+		this.plcttData[1].data = [ 2.6, 2.8, 3.4, 3.1, 2.4 ]; // Automatons 2
+		this.plcttData[2].data = [ 2.6, 2.8, 3.4, 3.1, 2.4 ]; // Automatons 3
+		this.plcttData[3].data = [ 2.6, 2.8, 3.4, 3.1, 2.4 ]; // Automatons 4
+		this.plcttData[4].data = [ 2.6, 2.8, 3.4, 3.1, 2.4 ]; // Automatons 5
+		this.plcttData[5].data = [ 2.6, 2.8, 3.4, 3.1, 2.4 ]; // Automatons 6
+		this.plcttData[6].data = [ 2.6, 2.8, 3.4, 3.1, 2.4 ]; // Automatons 7
+		this.plcttData[7].data = [ 2.6, 2.8, 3.4, 3.1, 2.4 ]; // Automatons 8
+		this.plcttData[8].data = [ 2.6, 2.8, 3.4, 3.1, 2.4 ]; // Automatons 9
+		this.plcttData[9].data = [ 2.6, 2.8, 3.4, 3.1, 2.4 ]; // Automatons 10
+
+		// Salmonella Level
+		this.plcslData[0].data = [ 65, 59, 90, 81, 56];
+
+		// Ecoli Level
+		this.plcelData[0].data = [ 65, 59, 90, 81, 56];
+		
+		// Listeria Level
+		this.plcllData[0].data = [ 65, 59, 90, 81, 56];
+
+		// PH Rate
+		this.plcprData = [ 
+			[
+				{
+					name: "Automaton #1",
+					ph: 3.5
+				},
+				{
+					name: "Automaton #2",
+					ph: 3.5
+				},
+				{
+					name: "Automaton #3",
+					ph: 3.5
+				},
+				{
+					name: "Automaton #4",
+					ph: 3.5
+				},
+				{
+					name: "Automaton #5",
+					ph: 3.5
+				},
+				{
+					name: "Automaton #6",
+					ph: 3.5
+				},
+				{
+					name: "Automaton #7",
+					ph: 3.5
+				},
+				{
+					name: "Automaton #8",
+					ph: 3.5
+				},
+				{
+					name: "Automaton #9",
+					ph: 3.5
+				},
+				{
+					name: "Automaton #10",
+					ph: 3.5
+				}
+			],
+			[
+				{
+					name: "Automaton #1",
+					ph: 3.5
+				},
+				{
+					name: "Automaton #2",
+					ph: 3.5
+				},
+				{
+					name: "Automaton #3",
+					ph: 3.5
+				},
+				{
+					name: "Automaton #4",
+					ph: 3.5
+				},
+				{
+					name: "Automaton #5",
+					ph: 3.5
+				},
+				{
+					name: "Automaton #6",
+					ph: 3.5
+				},
+				{
+					name: "Automaton #7",
+					ph: 3.5
+				},
+				{
+					name: "Automaton #8",
+					ph: 3.5
+				},
+				{
+					name: "Automaton #9",
+					ph: 3.5
+				},
+				{
+					name: "Automaton #10",
+					ph: 3.5
+				}
+			],
+			[
+				{
+					name: "Automaton #1",
+					ph: 3.5
+				},
+				{
+					name: "Automaton #2",
+					ph: 3.5
+				},
+				{
+					name: "Automaton #3",
+					ph: 3.5
+				},
+				{
+					name: "Automaton #4",
+					ph: 3.5
+				},
+				{
+					name: "Automaton #5",
+					ph: 3.5
+				},
+				{
+					name: "Automaton #6",
+					ph: 3.5
+				},
+				{
+					name: "Automaton #7",
+					ph: 3.5
+				},
+				{
+					name: "Automaton #8",
+					ph: 3.5
+				},
+				{
+					name: "Automaton #9",
+					ph: 3.5
+				},
+				{
+					name: "Automaton #10",
+					ph: 3.5
+				}
+			],
+			[
+				{
+					name: "Automaton #1",
+					ph: 3.5
+				},
+				{
+					name: "Automaton #2",
+					ph: 3.5
+				},
+				{
+					name: "Automaton #3",
+					ph: 3.5
+				},
+				{
+					name: "Automaton #4",
+					ph: 3.5
+				},
+				{
+					name: "Automaton #5",
+					ph: 3.5
+				},
+				{
+					name: "Automaton #6",
+					ph: 3.5
+				},
+				{
+					name: "Automaton #7",
+					ph: 3.5
+				},
+				{
+					name: "Automaton #8",
+					ph: 3.5
+				},
+				{
+					name: "Automaton #9",
+					ph: 3.5
+				},
+				{
+					name: "Automaton #10",
+					ph: 3.5
+				}
+			],
+			[
+				{
+					name: "Automaton #1",
+					ph: 3.5
+				},
+				{
+					name: "Automaton #2",
+					ph: 3.5
+				},
+				{
+					name: "Automaton #3",
+					ph: 3.5
+				},
+				{
+					name: "Automaton #4",
+					ph: 3.5
+				},
+				{
+					name: "Automaton #5",
+					ph: 3.5
+				},
+				{
+					name: "Automaton #6",
+					ph: 3.5
+				},
+				{
+					name: "Automaton #7",
+					ph: 3.5
+				},
+				{
+					name: "Automaton #8",
+					ph: 3.5
+				},
+				{
+					name: "Automaton #9",
+					ph: 3.5
+				},
+				{
+					name: "Automaton #10",
+					ph: 3.5
+				}
+			]
+		];
+
 		// Warning and Alerts for Tanks Temperatures
 		this.plcttData.forEach((dataset) => {
 			for (let i = 0; i < dataset.data.length; i++) {

@@ -8,6 +8,11 @@ import { AlertsPage } from './pages/alerts/alerts.page';
 
 const routes: Routes = [
 	{
+		path: '',
+		redirectTo: 'dashboard',
+		pathMatch: 'full'
+	},
+	{
 		path: 'login',
 		component: LoginPage,
 		pathMatch: 'full'
