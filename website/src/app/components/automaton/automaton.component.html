@@ -24,12 +24,100 @@
             </canvas>
         </div>
     </div>
-    <div class="al-card milk-weight">3</div>
-    <div class="al-card finished-product-weight">4</div>
-    <div class="al-card ph">5</div>
-    <div class="al-card potassium">6</div>
-    <div class="al-card nacl">7</div>
-    <div class="al-card salmonella">8</div>
-    <div class="al-card ecoli">9</div>
-    <div class="al-card listeria">10</div>
+    <div class="al-card milk-weight">
+        <div class="alc-chart">
+            <canvas baseChart 
+                    [datasets]="alcmwData"
+                    [labels]="alcmwLabels"
+                    [options]="alcmwOptions"
+                    [plugins]="alcmwPlugins"
+                    [legend]="alcmwLegend"
+                    [chartType]="alcmwType">
+            </canvas>
+        </div>
+    </div>
+    <div class="al-card finished-product-weight">
+        <div class="alc-chart">
+            <canvas baseChart 
+                    [datasets]="alcfpData"
+                    [labels]="alcfpLabels"
+                    [options]="alcfpOptions"
+                    [plugins]="alcfpPlugins"
+                    [legend]="alcfpLegend"
+                    [chartType]="alcfpType">
+            </canvas>
+        </div>
+    </div>
+    <div class="al-card ph">
+        <div class="alc-chart">
+            <canvas baseChart 
+                    [datasets]="alcphData"
+                    [labels]="alcphLabels"
+                    [options]="alcphOptions"
+                    [plugins]="alcphPlugins"
+                    [legend]="alcphLegend"
+                    [chartType]="alcphType">
+            </canvas>
+        </div>
+    </div>
+    <div class="al-card potassium">
+        <div class="alc-chart">
+            <canvas baseChart 
+                    [datasets]="alckData"
+                    [labels]="alckLabels"
+                    [options]="alckOptions"
+                    [plugins]="alckPlugins"
+                    [legend]="alckLegend"
+                    [chartType]="alckType">
+            </canvas>
+        </div>
+    </div>
+    <div class="al-card nacl">
+        <div class="alc-chart">
+            <canvas baseChart 
+                    [datasets]="alcnaclData"
+                    [labels]="alcnaclLabels"
+                    [options]="alcnaclOptions"
+                    [plugins]="alcnaclPlugins"
+                    [legend]="alcnaclLegend"
+                    [chartType]="alcnaclType">
+            </canvas>
+        </div>
+    </div>
+    <div class="al-card salmonella">
+        <div class="alc-chart">
+            <canvas baseChart 
+                    [datasets]="alcsData"
+                    [labels]="alcsLabels"
+                    [options]="alcsOptions"
+                    [plugins]="alcsPlugins"
+                    [legend]="alcsLegend"
+                    [chartType]="alcsType">
+            </canvas>
+        </div>
+    </div>
+    <div class="al-card ecoli">
+        <div class="alc-chart">
+            <canvas baseChart 
+                    [datasets]="alcecData"
+                    [labels]="alcecLabels"
+                    [options]="alcecOptions"
+                    [plugins]="alcecPlugins"
+                    [legend]="alcecLegend"
+                    [chartType]="alcecType">
+            </canvas>
+        </div>
+    </div>
+    <div class="al-card listeria">
+        <div class="alc-chart">
+            <canvas baseChart 
+                    [datasets]="alclData"
+                    [labels]="alclLabels"
+                    [options]="alclOptions"
+                    [plugins]="alclPlugins"
+                    [legend]="alclLegend"
+                    [chartType]="alclType">
+            </canvas>
+        </div>
+    </div>
 </div>
