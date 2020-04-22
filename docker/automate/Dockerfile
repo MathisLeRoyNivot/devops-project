@@ -1,5 +1,7 @@
+#Pull debian9.9 on Docker Hub
 FROM debian:9.9 as builder
 
+# Install python 3.8
 ENV LC_ALL C.UTF-8
 ENV LANG C.UTF-8
 ENV PATH /usr/local/bin:$PATH
@@ -66,11 +68,22 @@ RUN apt update && apt install --no-install-recommends --no-install-suggests -y $
     && apt remove --autoremove --purge -y ${REMOVE_DEPS} \
     && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /usr/src/devops-project/plc-python
+# Copy script to generate data
+WORKDIR /usr/src/devops-project-prod
 COPY . .
 
-FROM builder
-WORKDIR /usr/src/devops-project-prod
-COPY --from=builder /usr/src/devops-project/plc-python /usr/src/devops-project-prod
+#Install Cron
+RUN apt-get update -y
+RUN apt-get -y install cron -y
+# Add crontab file in the cron directory
+ADD crontab /etc/cron.d/crontab
 
+# Give execution rights on the cron job
+RUN chmod 644 /etc/cron.d/crontab
+RUN chmod +x /etc/cron.d/crontab
+CMD tail -f /dev/null
 
+# Create the log file to be able to run tail
+RUN touch /var/log/cron.log
+RUN crontab /etc/cron.d/crontab
+ENTRYPOINT ["cron", "-f"]
