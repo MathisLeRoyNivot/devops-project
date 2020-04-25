@@ -197,7 +197,9 @@ def main():
         formated_data["listeria_level"] = unit.listeriaLevel
         generated_data.append(formated_data)
 
+    # Get unix date
     unix_date = datetime.utcnow().strftime("%s")
+    # Generate json file name depending on automaton parameters
     json_file_name = "{}_{}_{}.json".format("paramunite", UNIT_NUM, unix_date)
 
     with open(json_file_name, "w") as json_file:
@@ -205,8 +207,10 @@ def main():
 
     print("File exported with name : " + json_file_name)
 
-    data_to_send = json.dumps(generated_data)
-    asyncio.get_event_loop().run_until_complete(message(data_to_send.encode()))
+    # Encode generated data before sending it 
+    data_to_send = json.dumps(generated_data).encode()
+    # Send encoded generated data throught socket
+    asyncio.get_event_loop().run_until_complete(message(data_to_send))
 
 
 
