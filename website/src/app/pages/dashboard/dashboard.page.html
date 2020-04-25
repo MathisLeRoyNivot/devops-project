@@ -1,0 +1,79 @@
+<div class="page-layout">
+    <div class="pl-card finished-products">
+        <div class="plc-chart">
+            <canvas baseChart 
+                    [datasets]="plcfpData"
+                    [labels]="plcfpLabels"
+                    [options]="plcfpOptions"
+                    [plugins]="plcfpPlugins"
+                    [legend]="plcfpLegend"
+                    [chartType]="plcfpType">
+            </canvas>
+        </div>
+    </div>
+    <div class="pl-card sold-products">
+        <div class="plc-chart">
+            <canvas baseChart 
+                    [data]="plcspData"
+                    [labels]="plcspLabels"
+                    [options]="plcspOptions"
+                    [plugins]="plcspPlugins"
+                    [legend]="plcspLegend"
+                    [chartType]="plcspType">
+            </canvas>
+        </div>
+    </div>
+    <div class="pl-card tanks-temperatures">
+        <div class="plc-chart">
+            <canvas baseChart 
+                    [datasets]="plcttData"
+                    [labels]="plcttLabels"
+                    [options]="plcttOptions"
+                    [plugins]="plcttPlugins"
+                    [legend]="plcttLegend"
+                    [chartType]="plcttType">
+            </canvas>
+        </div>
+    </div>
+    <div class="pl-card ph-rate">
+        <h1>PH Rate</h1>
+        <div class="plcpr-wrapper">
+            <div class="plcprw-item" *ngFor="let item of plcprData;let index = index">
+                <h2>Unit {{index + 1}}</h2>
+                <div class="plcprwi-automaton" *ngFor="let automaton of item">
+                    <p>{{automaton.name}}</p>
+                    <p>{{automaton.ph}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pl-card salmonella-level">
+        <div class="plc-chart">
+            <canvas baseChart 
+                    [datasets]="plcslData"
+                    [labels]="plcslLabels"
+                    [options]="plcslOptions"
+                    [chartType]="plcslType">
+            </canvas>
+        </div>
+    </div>
+    <div class="pl-card ecoli-level">
+        <div class="plc-chart">
+            <canvas baseChart 
+                    [datasets]="plcelData"
+                    [labels]="plcelLabels"
+                    [options]="plcelOptions"
+                    [chartType]="plcelType">
+            </canvas>
+        </div>
+    </div>
+    <div class="pl-card listeria-level">
+        <div class="plc-chart">
+            <canvas baseChart 
+                    [datasets]="plcllData"
+                    [labels]="plcllLabels"
+                    [options]="plcllOptions"
+                    [chartType]="plcllType">
+            </canvas>
+        </div>
+    </div>

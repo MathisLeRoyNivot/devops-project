@@ -1,0 +1,99 @@
+@import 'src/styles/main';
+
+.page-layout {
+    margin: 75px auto auto auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 300px;
+
+    height: 100%;
+    width: 100%;
+    max-width: 1600px;
+
+    .pl-card {
+        background-color: #FFFFFF;
+        border: .0625rem solid #e4e9f2;
+        border-radius: 10px;
+        margin: 20px;
+
+        &.finished-products {
+            grid-column-start: 1; 
+            grid-column-end: 3; 
+            grid-row-start: 1; 
+            grid-row-end: 2;
+        }
+
+        &.sold-products {
+            grid-column-start: 3; 
+            grid-column-end: 5; 
+            grid-row-start: 1; 
+            grid-row-end: 2;
+        }
+
+        &.tanks-temperatures {
+            grid-column-start: 1; 
+            grid-column-end: 5; 
+            grid-row-start: 2; 
+            grid-row-end: 4;
+        }
+
+        &.ph-rate {
+            grid-column-start: 1; 
+            grid-column-end: 2; 
+            grid-row-start: 4; 
+            grid-row-end: 6;
+        }
+
+        &.salmonella-level {
+            grid-column-start: 2; 
+            grid-column-end: 3; 
+            grid-row-start: 4; 
+            grid-row-end: 5;
+        }
+
+        &.ecoli-level {
+            grid-column-start: 3; 
+            grid-column-end: 4; 
+            grid-row-start: 4; 
+            grid-row-end: 5;
+        }
+
+        &.listeria-level {
+            grid-column-start: 4; 
+            grid-column-end: 5; 
+            grid-row-start: 4; 
+            grid-row-end: 5;
+        }
+
+        .plc-chart {
+            height: 100%;
+            width: 100%;
+        }
+
+        &.ph-rate {
+            overflow-y: scroll;
+
+            h1 {
+                margin-left: 5px;
+            }
+
+            .plcpr-wrapper {
+                display: flex;
+                flex-direction: column;
+                height: auto;
+                margin-left: 5px;
+    
+                .plcprw-item {
+                    width: 100%;
+
+                    .plcprwi-automaton {
+                        display: flex;
+                        justify-content: space-between;
+                        margin: 0 5px 0 20px;
+                        height: 50px;
+                    }
+                }
+            }
+        } 
+    }
+}

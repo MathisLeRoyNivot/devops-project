@@ -1,0 +1,19 @@
+image: nikolaik/python-nodejs:latest
+
+before_script:
+ - npm install -g @nestjs/cli @nestjs/schematics firebase-tools
+
+build:
+ script:
+  - npm install
+  - npm run build
+ only:
+  - develop
+
+deploy:
+ script:
+  - npm install
+  - npm run build
+  - firebase deploy --token "$FIREBASE_TOKEN" --only functions
+ only:
+  - develop

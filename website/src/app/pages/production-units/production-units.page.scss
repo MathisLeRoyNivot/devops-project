@@ -1,0 +1,49 @@
+@import 'src/styles/main';
+
+.page-layout {
+    margin: 75px auto auto auto;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-auto-rows: 100px;
+
+    height: 100%;
+    width: 100%;
+    max-width: 1600px;
+
+
+    .pl-units {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-auto-rows: 100px;
+        grid-column: 1 / 6;
+        grid-row: 1 / 2;
+
+        .pl-card {
+            background-color: #FFFFFF;
+            border: .0625rem solid #e4e9f2;
+            border-radius: 10px;
+            margin: 20px;
+    
+            &.plu-btn {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                &:hover {
+                    cursor: pointer;
+                }
+
+                h2 {
+                    display: block;
+                }
+            }
+        }
+    }
+
+    ::ng-deep app-unit {
+        grid-column: 1 / 6;
+        grid-row: 1 / 20;
+    }
+
+    
+}

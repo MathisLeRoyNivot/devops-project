@@ -1,0 +1,8 @@
+<div class="page-layout">
+    <div class="pl-automaton">
+        <button *ngFor="let automaton of automatons" class="pl-card pla-btn" id="automaton-{{automaton}}" [routerLink]="['/production-units', unit_id, automaton]">
+            Automaton {{automaton}}
+        </button>
+    </div>
+    <router-outlet></router-outlet>
+</div>
