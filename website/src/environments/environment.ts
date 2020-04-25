@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  apiRoot: "http://localhost:5001/abb-api/europe-west1/api",
-  apiLogin: "http://localhost:5001/abb-api/europe-west1/api/auth/login",
+  apiRoot: "https://europe-west1-abb-api.cloudfunctions.net/api",
+  apiLogin: "https://europe-west1-abb-api.cloudfunctions.net/api/auth/login",
 };
 
 /*
