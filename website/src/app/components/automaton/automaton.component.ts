@@ -236,46 +236,57 @@ export class AutomatonComponent implements OnInit {
 
   ngOnInit(): void {
 
+	// Retrieve Data
+	let data = this.automatonService.getData(1, 5);
+
 	// Tank Temperature
-	let alctt = this.automatonService.getTankTemperatures(1, 5);
+	let alctt = data.alctt;
     this.alcttLabels = alctt.labels;
     this.alcttData[0].data = alctt.data;
     
-    // Main Temperature
-    this.alcmtLabels = [ '18h10', '18h20', '18h30', '18h40', '18h50', '19h00', '19h10' ];
-	this.alcmtData[0].data = [ 26, 30, 50, 34, 45, 32, 10 ];
+	// Main Temperature
+	let alcmt = data.alcmt;
+    this.alcmtLabels = alcmt.labels;
+	this.alcmtData[0].data = alcmt.data;
 
 	// Milk Weight 
-    this.alcmwLabels = [ '18h10', '18h20', '18h30', '18h40', '18h50', '19h00', '19h10' ];
-	this.alcmwData[0].data = [ 26, 30, 50, 34, 45, 32, 10 ];
+	let alcmw = data.alcmw;
+    this.alcmwLabels = alcmw.labels;
+	this.alcmwData[0].data = alcmw.data;
 
 	// Finished Products
-    this.alcfpLabels = [ '18h10', '18h20', '18h30', '18h40', '18h50', '19h00', '19h10' ];
-	this.alcfpData[0].data = [ 26, 30, 50, 34, 45, 32, 10 ];
+	let alcfp = data.alcfp;
+    this.alcfpLabels = alcfp.labels;
+	this.alcfpData[0].data = alcfp.data;
 
 	// PH Level
-    this.alcphLabels = [ '18h10', '18h20', '18h30', '18h40', '18h50', '19h00', '19h10' ];
-	this.alcphData[0].data = [ 26, 30, 50, 34, 45, 32, 10 ];
+	let alcph = data.alcph;
+    this.alcphLabels = alcph.labels;
+	this.alcphData[0].data = alcph.data;
 
 	// K+
-    this.alckLabels = [ '18h10', '18h20', '18h30', '18h40', '18h50', '19h00', '19h10' ];
-	this.alckData[0].data = [ 26, 30, 50, 34, 45, 32, 10 ];
+	let alck = data.alck;
+    this.alckLabels = alck.labels;
+	this.alckData[0].data = alck.data;
 
 	// NaCl
-    this.alcnaclLabels = [ '18h10', '18h20', '18h30', '18h40', '18h50', '19h00', '19h10' ];
-	this.alcnaclData[0].data = [ 26, 30, 50, 34, 45, 32, 10 ];
+	let alcnacl = data.alcnacl;
+    this.alcnaclLabels = alcnacl.labels;
+	this.alcnaclData[0].data = alcnacl.data;
 
 	// Salmonella
-    this.alcsLabels = [ '18h10', '18h20', '18h30', '18h40', '18h50', '19h00', '19h10' ];
-	this.alcsData[0].data = [ 26, 30, 50, 34, 45, 32, 10 ];
+	let alcs = data.alcs;
+    this.alcsLabels = alcs.labels;
+	this.alcsData[0].data = alcs.data;
 
 	// E-Coli
-    this.alcecLabels = [ '18h10', '18h20', '18h30', '18h40', '18h50', '19h00', '19h10' ];
-	this.alcecData[0].data = [ 26, 30, 50, 34, 45, 32, 10 ];
+	let alcec = data.alcec;
+    this.alcecLabels = alcec.labels;
+	this.alcecData[0].data = alcec.data;
 
 	// Listeria
-    this.alclLabels = [ '18h10', '18h20', '18h30', '18h40', '18h50', '19h00', '19h10' ];
-	this.alclData[0].data = [ 26, 30, 50, 34, 45, 32, 10 ];
+	let alcl = data.alcl;
+    this.alclLabels = alcl.labels;
+	this.alclData[0].data = alcl.data;
   }
-
 }
