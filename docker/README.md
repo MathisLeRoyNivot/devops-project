@@ -16,28 +16,15 @@ Programmable Logic Controller (**PLC**)
 ### **Build image**
 
 ```docker
-docker build -t <image_name> .
-```
-
-Example :
-
-```docker
-docker build -t plc-python .
+docker-compose build
 ```
 
 ### **Run image**
 
-> Run image by passing two additional arguments, the **unit number** and the **automaton quantity** per unit
+> Run image
 
 ```docker
-docker run <image_name> <UNIT_NUM> <AUTOMATON_QTY>
-```
-
-Example :
-> Run the built image named *plc-python* with unit #1 and 10 automatons for this unit
-
-```docker
-docker run plc-python 1 10
+docker-compose up
 ```
 
 ## Documentations

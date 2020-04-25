@@ -25,3 +25,8 @@ services:
     command: /bin/echo "/usr/local/bin/python3 /usr/src/devops-project-prod/main.py 5 10 >> /var/log/cron.log 2>&1" >> script.sh
     ports:
       - "3004:3004"
+  database:
+    build: ./bdd
+    environment:
+      - "MYSQL_ALLOW_EMPTY_PASSWORD=false"
+      - "MYSQL_ROOT_PASSWORD=test"

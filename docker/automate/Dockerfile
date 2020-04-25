@@ -1,5 +1,5 @@
 #Pull debian9.9 on Docker Hub
-FROM debian:9.9 as builder
+FROM debian:9.9 
 
 # Install python 3.8
 ENV LC_ALL C.UTF-8
@@ -85,5 +85,7 @@ CMD tail -f /dev/null
 
 # Create the log file to be able to run tail
 RUN touch /var/log/cron.log
+
+# RUN crontab
 RUN crontab /etc/cron.d/crontab
 ENTRYPOINT ["cron", "-f"]
