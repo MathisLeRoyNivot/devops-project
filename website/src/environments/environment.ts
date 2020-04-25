@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apiRoot: "http://localhost:5001/abb-api/europe-west1/api",
+  apiLogin: "http://localhost:5001/abb-api/europe-west1/api/auth/login",
 };
 
 /*
