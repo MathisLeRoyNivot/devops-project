@@ -68,13 +68,14 @@ RUN apt update && apt install --no-install-recommends --no-install-suggests -y $
     && apt remove --autoremove --purge -y ${REMOVE_DEPS} \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy script to generate data
+# Copy script and crontab
 WORKDIR /usr/src/devops-project-prod
 COPY . .
 
 #Install Cron
 RUN apt-get update -y
 RUN apt-get -y install cron -y
+
 # Add crontab file in the cron directory
 ADD crontab /etc/cron.d/crontab
 
