@@ -26,7 +26,7 @@ export class DashboardPage implements OnInit {
 		maintainAspectRatio: false,
 		aspectRatio: 2
 	};
-	public plcfpLegend = false;
+	public plcfpLegend = true;
 	public plcfpType = 'line';
 	public plcfpPlugins = [];
 
