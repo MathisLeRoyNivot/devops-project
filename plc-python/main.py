@@ -1,11 +1,14 @@
+import asyncio
 import os
 import json
 import random
+import websockets
 from datetime import datetime
 from sys import argv
 
 UNIT_NUM = int(argv[1])
 AUTOMATON_QTY = int(argv[2])
+SERVER_PORT = 4000
 generated_data = list()
 
 class UnitProduction:
@@ -154,6 +157,13 @@ def generateRandomData(min, max, step):
 def generateRandomDataFloat(min, max):
     return round(random.uniform(min, max), 1)
 
+
+async def message(msg):
+    async with websockets.connect(f"ws://localhost:{SERVER_PORT}") as socket:
+        await socket.send(msg)
+        print(await socket.recv())
+
+
 def main():
 
     for automaton in range(1, AUTOMATON_QTY + 1):
@@ -194,6 +204,10 @@ def main():
         json.dump(generated_data, json_file, ensure_ascii=False, indent=4)
 
     print("File exported with name : " + json_file_name)
+
+    data_to_send = json.dumps(generated_data)
+    asyncio.get_event_loop().run_until_complete(message(data_to_send.encode()))
+
 
 
 if __name__ == "__main__":
