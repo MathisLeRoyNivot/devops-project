@@ -38,15 +38,8 @@ services:
     environment:
       - "MYSQL_ALLOW_EMPTY_PASSWORD=false"
       - "MYSQL_ROOT_PASSWORD=test"
-
+      
   website:
     build: ./website
     ports:
-      - "4200:4200"
-    networks:
-      - app-network
-
-# Network
-networks: 
-  app-network:
-    driver: bridge
+      - "80:80"
