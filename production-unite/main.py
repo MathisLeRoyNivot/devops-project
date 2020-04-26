@@ -156,11 +156,6 @@ def generateRandomData(min, max, step):
 
 def generateRandomDataFloat(min, max):
     return round(random.uniform(min, max), 1)
-<<<<<<< HEAD:production-unite/main.py
-=======
-<<<<<<< HEAD:production-unite/main.py
-=======
->>>>>>> website/feat/docker:automate/main.py
 
 
 async def message(msg):
@@ -168,23 +163,11 @@ async def message(msg):
         await socket.send(msg)
         print(await socket.recv())
 
-<<<<<<< HEAD:production-unite/main.py
-=======
->>>>>>> 522cf094123022da9329fbbba036980b4a57ddca:plc-python/main.py
->>>>>>> website/feat/docker:automate/main.py
-
 def main():
 
     for automaton in range(1, AUTOMATON_QTY + 1):
-<<<<<<< HEAD:production-unite/main.py
         automaton_type = generateType(automaton)
-=======
-<<<<<<< HEAD:production-unite/main.py
-        plc_type = generateType(automaton)
-=======
         automaton_type = generateType(automaton)
->>>>>>> 522cf094123022da9329fbbba036980b4a57ddca:plc-python/main.py
->>>>>>> website/feat/docker:automate/main.py
         tank_temp = generateRandomDataFloat(2.5, 4)
         outside_temp = generateRandomDataFloat(8, 14)
         milk_weigth = generateRandomData(3512, 4607, 1)
