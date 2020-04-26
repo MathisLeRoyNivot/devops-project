@@ -9,5 +9,8 @@ RUN npm run build:prod
 # Run
 FROM nginx:1.17.1-alpine
 WORKDIR /usr/share/nginx/html
+RUN rm -rf /usr/share/nginx/html/*
 COPY --from=build /usr/src/app/dist/website /usr/share/nginx/html
+
+EXPOSE 4200
 
