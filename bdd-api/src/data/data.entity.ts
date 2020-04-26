@@ -1,49 +1,49 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity()
+@Entity('data')
 export class Data {
     @PrimaryGeneratedColumn()
-    id: number;
+    id: any;
 
-    @Column()
+    @Column("int")
     unit_num: number;
 
-    @Column()
+    @Column("int")
     automaton_num: number;
 
-    @Column()
-    automaton_type: number;
+    @Column({ type: 'varchar', length: 255, nullable: false })
+    automaton_type: string;
 
-    @Column()
+    @Column("float")
     tank_temp: number;
 
-    @Column()
+    @Column("float")
     outside_temp: number;
 
-    @Column()
+    @Column("float")
     milk_weight: number;
 
-    @Column()
+    @Column("float")
     final_product_weight: number;
 
-    @Column()
+    @Column("float")
     ph: number;
 
-    @Column()
+    @Column("int")
     potassium: number;
 
-    @Column()
+    @Column("float")
     sodium_chlorure_concentration: number;
 
-    @Column()
+    @Column("int")
     salmonella_lvl: number;
 
-    @Column()
+    @Column("int")
     e_coli_lvl: number;
 
-    @Column()
+    @Column("int")
     listeria_lvl: number;
 
-    @Column('date') 
-    created_at:Date;
+    @Column('timestamp') 
+    created_at: Date;
 }

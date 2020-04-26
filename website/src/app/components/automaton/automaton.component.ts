@@ -10,7 +10,10 @@ import { AutomatonService } from 'src/app/services/automaton.service';
 })
 export class AutomatonComponent implements OnInit {
 
-	automatonService = new AutomatonService();
+	constructor(private automatonService:AutomatonService) { 
+	}
+
+	
 
   // Tank Temperature 
 	public alcttData: ChartDataSets[] = [
@@ -231,9 +234,6 @@ export class AutomatonComponent implements OnInit {
 	public alclType = 'line';
 	public alclPlugins = [];
 
-  constructor() { 
-  }
-
   ngOnInit(): void {
 
 	// Retrieve Data
@@ -288,5 +288,9 @@ export class AutomatonComponent implements OnInit {
 	let alcl = data.alcl;
     this.alclLabels = alcl.labels;
 	this.alclData[0].data = alcl.data;
+
+	// this.automatonService.getData(1, 3).then((value) => {
+	// 	console.log(value);
+	// });
   }
 }

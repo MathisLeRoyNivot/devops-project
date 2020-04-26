@@ -1,10 +1,11 @@
 {
-    "type": "mysql",
-    "host": "localhost",
+    "type": "mariadb",
+    "host": "database",
     "port": 3306,
     "username": "root",
     "password": "test",
     "database": "devops",
     "entities": ["dist/**/*.entity.js"],
-    "synchronize": true
-  }
+    "synchronize": true,
+    "logging": true
+}
