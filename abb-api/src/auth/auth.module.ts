@@ -15,7 +15,7 @@ import * as fs from 'fs';
     JwtModule.register({
       privateKey: fs.readFileSync('src/auth/private.key', 'utf8'),
       signOptions: {
-        expiresIn: '60s',
+        expiresIn: '900s',
         algorithm: 'RS256'
       },
     }),
