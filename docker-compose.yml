@@ -47,7 +47,7 @@ services:
     ports:
       - "3306:3306"
 
-  # website:
-  #   build: ./website
-  #   ports:
-  #     - "80:80"
+# website:
+#    build: ./website
+#    ports:
+#       - "80:80"

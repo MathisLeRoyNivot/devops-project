@@ -2,14 +2,7 @@ import asyncio
 import os
 import json
 import random
-<<<<<<< HEAD:production-unite/main.py
 import websockets
-=======
-<<<<<<< HEAD:production-unite/main.py
-=======
-import websockets
->>>>>>> 522cf094123022da9329fbbba036980b4a57ddca:plc-python/main.py
->>>>>>> website/feat/docker:automate/main.py
 from datetime import datetime
 from sys import argv
 
