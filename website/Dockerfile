@@ -7,10 +7,13 @@ COPY . .
 RUN npm run build:prod
 
 # Run
-FROM nginx:1.17.1-alpine
+FROM socialengine/nginx-spa
 WORKDIR /usr/share/nginx/html
-RUN rm -rf /usr/share/nginx/html/*
-COPY --from=build /usr/src/app/dist/website /usr/share/nginx/html
+# COPY ./nginx.conf /etc/nginx/conf.d/
+# RUN rm -rf /usr/share/nginx/html/*
+# COPY --from=build /usr/src/app/dist/website /usr/share/nginx/html
+RUN rm -rf /app/*
+COPY --from=build /usr/src/app/dist/website /app
 
 EXPOSE 4200
 
