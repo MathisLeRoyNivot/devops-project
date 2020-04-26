@@ -72,6 +72,8 @@ RUN apt update && apt install --no-install-recommends --no-install-suggests -y $
 WORKDIR /usr/src/devops-project-prod
 COPY . .
 
+RUN pip install -r /usr/src/devops-project-prod/requirements.txt
+
 #Install Cron
 RUN apt-get update -y
 RUN apt-get -y install cron -y

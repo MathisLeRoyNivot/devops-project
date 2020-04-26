@@ -1,37 +1,43 @@
 # Compose file version
 version: '3'
 services:
-  automate1: 
-    # Build dockerfile in folder automate
-    build: ./automate 
-    # Echo command writing in the script.sh file launched by our crontab
-    command: /bin/echo "/usr/local/bin/python3 /usr/src/devops-project-prod/main.py 1 10 >> /var/log/cron.log 2>&1" >> script.sh
+  connector:
+    build: ./plc-python 
+    command: /bin/echo "/usr/local/bin/python3 /usr/src/devops-project-prod/connector.py 3000"
     ports:
       - "3000:3000"
 
-  automate2: 
-    build: ./automate
-    command: /bin/echo "/usr/local/bin/python3 /usr/src/devops-project-prod/main.py 2 10 >> /var/log/cron.log 2>&1" >> script.sh
+  automate1: 
+    # Build dockerfile in folder plc-python
+    build: ./plc-python
+    # Echo command writing in the script.sh file launched by our crontab
+    command: /bin/echo "/usr/local/bin/python3 /usr/src/devops-project-prod/main.py 1 10 3000 >> /var/log/cron.log 2>&1" >> script.sh
     ports:
       - "3001:3001"
 
-  automate3: 
-    build: ./automate 
-    command: /bin/echo "/usr/local/bin/python3 /usr/src/devops-project-prod/main.py 3 10 >> /var/log/cron.log 2>&1" >> script.sh
+  automate2: 
+    build: ./plc-python
+    command: /bin/echo "/usr/local/bin/python3 /usr/src/devops-project-prod/main.py 2 10 3000 >> /var/log/cron.log 2>&1" >> script.sh
     ports:
       - "3002:3002"
 
-  automate4: 
-    build: ./automate
-    command: /bin/echo "/usr/local/bin/python3 /usr/src/devops-project-prod/main.py 4 10 >> /var/log/cron.log 2>&1" >> script.sh
+  automate3: 
+    build: ./plc-python 
+    command: /bin/echo "/usr/local/bin/python3 /usr/src/devops-project-prod/main.py 3 10 3000 >> /var/log/cron.log 2>&1" >> script.sh
     ports:
       - "3003:3003"
 
-  automate5: 
-    build: ./automate
-    command: /bin/echo "/usr/local/bin/python3 /usr/src/devops-project-prod/main.py 5 10 >> /var/log/cron.log 2>&1" >> script.sh
+  automate4: 
+    build: ./plc-python
+    command: /bin/echo "/usr/local/bin/python3 /usr/src/devops-project-prod/main.py 4 10 3000 >> /var/log/cron.log 2>&1" >> script.sh
     ports:
       - "3004:3004"
+
+  automate5: 
+    build: ./plc-python
+    command: /bin/echo "/usr/local/bin/python3 /usr/src/devops-project-prod/main.py 5 10 3000 >> /var/log/cron.log 2>&1" >> script.sh
+    ports:
+      - "3005:3005"
 
   database:
     build: ./bdd
