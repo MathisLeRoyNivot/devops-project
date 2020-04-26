@@ -4,7 +4,8 @@
 /out-tsc
 
 # dependencies
-ngx-admin/node_modules
+website/node_modules
+bdd-api/node_modules
 
 # IDEs and editors
 /.idea
