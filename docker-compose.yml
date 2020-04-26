@@ -2,39 +2,39 @@
 version: '3'
 services:
   connector:
-    build: ./plc-python 
+    build: ./production-unite
     command: /bin/echo "/usr/local/bin/python3 /usr/src/devops-project-prod/connector.py 3000"
     ports:
       - "3000:3000"
 
   automate1: 
     # Build dockerfile in folder plc-python
-    build: ./plc-python
+    build: ./production-unite
     # Echo command writing in the script.sh file launched by our crontab
     command: /bin/echo "/usr/local/bin/python3 /usr/src/devops-project-prod/main.py 1 10 3000 >> /var/log/cron.log 2>&1" >> script.sh
     ports:
       - "3001:3001"
 
   automate2: 
-    build: ./plc-python
+    build: ./production-unite
     command: /bin/echo "/usr/local/bin/python3 /usr/src/devops-project-prod/main.py 2 10 3000 >> /var/log/cron.log 2>&1" >> script.sh
     ports:
       - "3002:3002"
 
   automate3: 
-    build: ./plc-python 
+    build: ./production-unite
     command: /bin/echo "/usr/local/bin/python3 /usr/src/devops-project-prod/main.py 3 10 3000 >> /var/log/cron.log 2>&1" >> script.sh
     ports:
       - "3003:3003"
 
   automate4: 
-    build: ./plc-python
+    build: ./production-unite
     command: /bin/echo "/usr/local/bin/python3 /usr/src/devops-project-prod/main.py 4 10 3000 >> /var/log/cron.log 2>&1" >> script.sh
     ports:
       - "3004:3004"
 
   automate5: 
-    build: ./plc-python
+    build: ./production-unite
     command: /bin/echo "/usr/local/bin/python3 /usr/src/devops-project-prod/main.py 5 10 3000 >> /var/log/cron.log 2>&1" >> script.sh
     ports:
       - "3005:3005"

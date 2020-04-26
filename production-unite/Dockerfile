@@ -68,12 +68,16 @@ RUN apt update && apt install --no-install-recommends --no-install-suggests -y $
     && apt remove --autoremove --purge -y ${REMOVE_DEPS} \
     && rm -rf /var/lib/apt/lists/*
 
+RUN pip install --upgrade pip
+RUN apt-get update -y
+
 # Copy script and crontab
 WORKDIR /usr/src/devops-project-prod
 COPY . .
 
+RUN pip install -r /usr/src/devops-project-prod/requirements.txt
+
 #Install Cron
-RUN apt-get update -y
 RUN apt-get -y install cron -y
 
 # Add crontab file in the cron directory
