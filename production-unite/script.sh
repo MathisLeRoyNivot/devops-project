@@ -1,1 +1,1 @@
-/usr/local/bin/python3 /usr/src/devops-project-prod/main.py 1 10 >> /var/log/cron.log 2>&1
+/usr/local/bin/python3 /usr/src/devops-project-prod/main.py 1 10 3000 >> /var/log/cron.log 2>&1
