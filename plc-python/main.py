@@ -195,6 +195,7 @@ def main():
         formated_data["salmonella_level"] = unit.salmonellaLevel
         formated_data["e_coli_level"] = unit.eColiLevel
         formated_data["listeria_level"] = unit.listeriaLevel
+        formated_data["created_at"] = datetime.today().strftime('%Y-%m-%d %H:%M:%S')
         generated_data.append(formated_data)
 
     # Get unix date
