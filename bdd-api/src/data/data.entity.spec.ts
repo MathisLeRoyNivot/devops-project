@@ -1,4 +1,4 @@
-import { DataEntity } from './data-entity';
+import { DataEntity } from './data.entity';
 
 describe('DataEntity', () => {
   it('should be defined', () => {

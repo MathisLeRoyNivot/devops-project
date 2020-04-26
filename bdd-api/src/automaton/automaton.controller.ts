@@ -1,6 +1,6 @@
 import { Controller, Post, Body, Get, Put, Delete,Param} from '@nestjs/common';
 import { AutomatonService } from './automaton.service';
-import { Data } from '../data/data-entity';
+import { Data } from '../data/data.entity';
 
 @Controller('automaton')
 export class AutomatonController {
@@ -9,11 +9,11 @@ export class AutomatonController {
 
     @Get(':unit_id/:automaton_id')
     getAutomaton(@Param() params) {
-        return this.automatonService.getAutomaton(params.unit_id, params.automaton_id);
+        return this.automatonService.getData(params.unit_id, params.automaton_id);
     }
 
-    @Post()
-    create(@Body() user: User) {
-        return this.service.createUser(user);
-    }
+    // @Post()
+    // create(@Body() user: User) {
+    //     return this.service.createUser(user);
+    // }
 }

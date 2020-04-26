@@ -38,6 +38,8 @@ services:
     environment:
       - "MYSQL_ALLOW_EMPTY_PASSWORD=false"
       - "MYSQL_ROOT_PASSWORD=test"
+    ports:
+      - "3306:3306"
 
   # website:
   #   build: ./website
