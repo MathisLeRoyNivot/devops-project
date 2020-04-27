@@ -4,7 +4,8 @@ import { Color, Label, SingleDataSet } from 'ng2-charts';
 import { AutomatonService } from 'src/app/services/automaton.service';
 import { ActivatedRoute, Router, RouterEvent, NavigationEnd } from '@angular/router';
 
-import { filter } from 'rxjs/operators';
+import { filter, takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 @Component({
 	selector: 'app-automaton',
@@ -14,6 +15,8 @@ import { filter } from 'rxjs/operators';
 export class AutomatonComponent implements OnInit {
 	unit_id: any;
 	automaton_id: any;
+
+	public destroyed = new Subject<any>();
 
 	constructor(
 		private automatonService: AutomatonService,
@@ -232,14 +235,11 @@ export class AutomatonComponent implements OnInit {
 	public alclPlugins = [];
 
 	ngOnInit(): void {
-		// Get Params
+		// Get unit_id and automaton_id from URL
 		this._Activatedroute.paramMap.subscribe((params) => {
 			this.unit_id = params.get('unit_id');
 			this.automaton_id = params.get('automaton_id');
 		});
-
-		console.log(this.unit_id);
-		console.log(this.automaton_id);
 
 		// Retrieve Data
 		this.automatonService.getData(this.unit_id, this.automaton_id).then((data) => {
@@ -294,7 +294,11 @@ export class AutomatonComponent implements OnInit {
 			this.alclData[0].data = alcl.data;
 		});
 
-		this.router.events.pipe(filter((event: RouterEvent) => event instanceof NavigationEnd)).subscribe(() => {
+		// Get Data on each automaton swap on Page
+		this.router.events.pipe(
+			filter((event: RouterEvent) => event instanceof NavigationEnd, 
+			takeUntil(this.destroyed)))
+			.subscribe(() => {
 			this.automatonService.getData(this.unit_id, this.automaton_id).then((data) => {
 				// Tank Temperature
 				let alctt = data.alctt;
@@ -348,4 +352,10 @@ export class AutomatonComponent implements OnInit {
 			});
 		});
 	}
+
+	// Purge current data on reload
+	ngOnDestroy(): void {
+		this.destroyed.next();
+		this.destroyed.complete();
+	  }
 }
