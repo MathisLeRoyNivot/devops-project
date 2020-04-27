@@ -5,14 +5,13 @@ import mysql.connector as mariadb
 from datetime import datetime
 from sys import argv
 
-BDD = "devops-project_database_1"
-HOST = "devops-project_connector_1
-SERVER_PORT = 3000
+HOST = "devops-project_database_1"
+SERVER_PORT = int(argv[1])
 USER = "root"
 PASSWORD = "test"
 DB = "devops"
 
-mariadb_connection = mariadb.connect(host = HOST,user = USER,password = PASSWORD, database= DB)
+mariadb_connection = mariadb.connect(host ="devops-project_database_1",user="root",password="test", database="devops")
 cursor = mariadb_connection.cursor()
 print(f"✅ Connection established with the database : {DB}")
 
@@ -23,11 +22,11 @@ async def response(websockets, path):
 
     for row in decoded_data:
         sql_insert_statement = """
-        INSERT INTO data (unit_num, automaton_num, automaton_type, tank_temp, outside_temp, milk_weight, final_product_weight, ph, potassium, sodium_chlorure_concentration, salmonella_lvl, e_coli_lvl, listeria_lvl, created_at, inserted_at)
-        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+        INSERT INTO data (unit_num, automaton_num, automaton_type, tank_temp, outside_temp, milk_weight, final_product_weight, ph, potassium, sodium_chlorure_concentration, salmonella_lvl, e_coli_lvl, listeria_lvl, created_at)
+        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
         """
         
-        row_to_insert = (row["unit_num"], row["automaton_num"], row["automaton_type"], row["tank_temp"], row["outside_temp"], row["milk_weigth"], row["final_product_weight"], row["ph"], row["potassium"], row["sodium_chlorure_concentration"], row["salmonella_level"], row["e_coli_level"], row["listeria_level"], row["created_at"], datetime.now().strftime("%m-%d-%Y %H:%M:%S"))
+        row_to_insert = (row["unit_num"], row["automaton_num"], row["automaton_type"], row["tank_temp"], row["outside_temp"], row["milk_weigth"], row["final_product_weight"], row["ph"], row["potassium"], row["sodium_chlorure_concentration"], row["salmonella_level"], row["e_coli_level"], row["listeria_level"], row["created_at"])
         cursor.execute(sql_insert_statement, row_to_insert)
         mariadb_connection.commit()
 

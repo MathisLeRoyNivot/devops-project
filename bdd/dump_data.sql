@@ -37,6 +37,7 @@ CREATE TABLE IF NOT EXISTS `devops`.`data` (
   `salmonella_lvl` int(10) NOT NULL,
   `e_coli_lvl` int(10) NOT NULL,
   `listeria_lvl` int(10) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `inserted_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 COMMIT;
