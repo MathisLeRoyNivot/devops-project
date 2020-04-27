@@ -24,7 +24,7 @@ ENV REMOVE_DEPS build-essential \
     wget
 
 RUN apt update && apt install --no-install-recommends --no-install-suggests -y ${BUILD_DEPS} \
-    && wget -O- https://www.python.org/ftp/python/${PYTHON_VERSION}/Python-${PYTHON_VERSION}${ALPHA_VERSION}.tgz | tar xz \
+    && wget -O- https://www.python.org/ftp/python/3.8.0/Python-3.8.0a1.tgz | tar xz \
     && cd Python-${PYTHON_VERSION}${ALPHA_VERSION}/ \
     && ./configure \
         --without-ensurepip \
@@ -77,5 +77,5 @@ COPY . .
 
 RUN pip install -r /usr/src/devops-project-prod/requirements.txt
 
-CMD /usr/local/bin/python3 /usr/src/devops-project-prod/connector.py 3000
+ENTRYPOINT ["/usr/local/bin/python3","/usr/src/devops-project-prod/connector.py","3000"]
 CMD tail -f /dev/null

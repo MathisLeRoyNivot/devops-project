@@ -3,6 +3,9 @@ version: '3'
 services:
   connector:
     build: ./connector
+    depends_on:
+      - "database"
+    restart: on-failure
     ports:
       - "3000:3000"
 
