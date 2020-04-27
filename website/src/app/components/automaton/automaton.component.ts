@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ChartOptions, ChartType, ChartDataSets, RadialChartOptions } from 'chart.js';
 import { Color, Label, SingleDataSet } from 'ng2-charts';
 import { AutomatonService } from 'src/app/services/automaton.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, RouterEvent, NavigationEnd } from '@angular/router';
+
+import { filter } from 'rxjs/operators';
 
 @Component({
 	selector: 'app-automaton',
@@ -10,13 +12,14 @@ import { ActivatedRoute } from '@angular/router';
 	styleUrls: [ './automaton.component.scss' ]
 })
 export class AutomatonComponent implements OnInit {
-
 	unit_id: any;
 	automaton_id: any;
 
 	constructor(
 		private automatonService: AutomatonService,
-		private _Activatedroute:ActivatedRoute) {}
+		private _Activatedroute: ActivatedRoute,
+		private router: Router
+	) {}
 
 	// Tank Temperature
 	public alcttData: ChartDataSets[] = [
@@ -230,9 +233,9 @@ export class AutomatonComponent implements OnInit {
 
 	ngOnInit(): void {
 		// Get Params
-		this._Activatedroute.paramMap.subscribe(params => { 
-			this.unit_id= params.get('unit_id'); 
-			this.automaton_id= params.get('automaton_id'); 
+		this._Activatedroute.paramMap.subscribe((params) => {
+			this.unit_id = params.get('unit_id');
+			this.automaton_id = params.get('automaton_id');
 		});
 
 		console.log(this.unit_id);
@@ -289,6 +292,60 @@ export class AutomatonComponent implements OnInit {
 			let alcl = data.alcl;
 			this.alclLabels = alcl.labels;
 			this.alclData[0].data = alcl.data;
+		});
+
+		this.router.events.pipe(filter((event: RouterEvent) => event instanceof NavigationEnd)).subscribe(() => {
+			this.automatonService.getData(this.unit_id, this.automaton_id).then((data) => {
+				// Tank Temperature
+				let alctt = data.alctt;
+				this.alcttLabels = alctt.labels;
+				this.alcttData[0].data = alctt.data;
+	
+				// Main Temperature
+				let alcmt = data.alcmt;
+				this.alcmtLabels = alcmt.labels;
+				this.alcmtData[0].data = alcmt.data;
+	
+				// Milk Weight
+				let alcmw = data.alcmw;
+				this.alcmwLabels = alcmw.labels;
+				this.alcmwData[0].data = alcmw.data;
+	
+				// Finished Products
+				let alcfp = data.alcfp;
+				this.alcfpLabels = alcfp.labels;
+				this.alcfpData[0].data = alcfp.data;
+	
+				// PH Level
+				let alcph = data.alcph;
+				this.alcphLabels = alcph.labels;
+				this.alcphData[0].data = alcph.data;
+	
+				// K+
+				let alck = data.alck;
+				this.alckLabels = alck.labels;
+				this.alckData[0].data = alck.data;
+	
+				// NaCl
+				let alcnacl = data.alcnacl;
+				this.alcnaclLabels = alcnacl.labels;
+				this.alcnaclData[0].data = alcnacl.data;
+	
+				// Salmonella
+				let alcs = data.alcs;
+				this.alcsLabels = alcs.labels;
+				this.alcsData[0].data = alcs.data;
+	
+				// E-Coli
+				let alcec = data.alcec;
+				this.alcecLabels = alcec.labels;
+				this.alcecData[0].data = alcec.data;
+	
+				// Listeria
+				let alcl = data.alcl;
+				this.alclLabels = alcl.labels;
+				this.alclData[0].data = alcl.data;
+			});
 		});
 	}
 }

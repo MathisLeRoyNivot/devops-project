@@ -9,7 +9,8 @@ import { UnitComponent } from './components/unit/unit.component';
 import { AutomatonComponent } from './components/automaton/automaton.component';
 
 export const routingConfiguration: ExtraOptions = {
-	paramsInheritanceStrategy: 'always'
+	paramsInheritanceStrategy: 'always',
+	onSameUrlNavigation: 'reload'
   };
 
 const routes: Routes = [
