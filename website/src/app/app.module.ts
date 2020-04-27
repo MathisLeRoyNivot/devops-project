@@ -14,6 +14,7 @@ import { ChartsModule } from 'ng2-charts';
 import { UnitComponent } from './components/unit/unit.component';
 import { AutomatonComponent } from './components/automaton/automaton.component';
 import { CanActivateRouteGuard } from './services/route-guard.service';
+import { AutomatonService } from './services/automaton.service';
 
 
 @NgModule({
@@ -35,7 +36,9 @@ import { CanActivateRouteGuard } from './services/route-guard.service';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [CanActivateRouteGuard],
+  providers: [
+    CanActivateRouteGuard,
+    AutomatonService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

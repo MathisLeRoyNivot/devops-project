@@ -1,25 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { ChartOptions, ChartType, ChartDataSets, RadialChartOptions} from 'chart.js';
+import { ChartOptions, ChartType, ChartDataSets, RadialChartOptions } from 'chart.js';
 import { Color, Label, SingleDataSet } from 'ng2-charts';
 import { AutomatonService } from 'src/app/services/automaton.service';
 
 @Component({
-  selector: 'app-automaton',
-  templateUrl: './automaton.component.html',
-  styleUrls: ['./automaton.component.scss']
+	selector: 'app-automaton',
+	templateUrl: './automaton.component.html',
+	styleUrls: [ './automaton.component.scss' ]
 })
 export class AutomatonComponent implements OnInit {
+	constructor(private automatonService: AutomatonService) {}
 
-	constructor(private automatonService:AutomatonService) { 
-	}
-
-	
-
-  // Tank Temperature 
+	// Tank Temperature
 	public alcttData: ChartDataSets[] = [
 		{
-			data: [ 26, 30, 12, 24, 45, 32, 10 ],
-			label: 'Finished Product',
+			data: [],
+			label: 'Tank Temperature',
 			backgroundColor: 'rgba(0, 213, 142, 0.4)',
 			borderColor: '#00d58e',
 			pointBackgroundColor: '#00d58e',
@@ -32,20 +28,19 @@ export class AutomatonComponent implements OnInit {
 		maintainAspectRatio: false,
 		aspectRatio: 2
 	};
-	public alcttLegend = false;
+	public alcttLegend = true;
 	public alcttType = 'line';
 	public alcttPlugins = [];
-  
 
-  // Main Temperature
+	// Main Temperature
 	public alcmtData: ChartDataSets[] = [
 		{
-			data: [ 26, 30, 12, 24, 45, 32, 10 ],
-			label: 'Finished Product',
-			backgroundColor: 'rgba(0, 213, 142, 0.4)',
-			borderColor: '#00d58e',
-			pointBackgroundColor: '#00d58e',
-			pointHoverBorderColor: '#00d58e'
+			data: [],
+			label: 'Outside Temperature',
+			backgroundColor: 'rgba(51, 102, 255, 0.4)',
+			borderColor: '#3366ff',
+			pointBackgroundColor: '#3366ff',
+			pointHoverBorderColor: '#3366ff'
 		}
 	];
 	public alcmtLabels: Label[];
@@ -54,20 +49,19 @@ export class AutomatonComponent implements OnInit {
 		maintainAspectRatio: false,
 		aspectRatio: 2
 	};
-	public alcmtLegend = false;
+	public alcmtLegend = true;
 	public alcmtType = 'line';
 	public alcmtPlugins = [];
-
 
 	// Milk Weight
 	public alcmwData: ChartDataSets[] = [
 		{
-			data: [ 26, 30, 12, 24, 45, 32, 10 ],
-			label: 'Finished Product',
-			backgroundColor: 'rgba(0, 213, 142, 0.4)',
-			borderColor: '#00d58e',
-			pointBackgroundColor: '#00d58e',
-			pointHoverBorderColor: '#00d58e'
+			data: [],
+			label: 'Milk Weight',
+			backgroundColor: 'rgba(0, 149, 255, 0.4)',
+			borderColor: '#0095ff',
+			pointBackgroundColor: '#0095ff',
+			pointHoverBorderColor: '#0095ff'
 		}
 	];
 	public alcmwLabels: Label[];
@@ -76,20 +70,19 @@ export class AutomatonComponent implements OnInit {
 		maintainAspectRatio: false,
 		aspectRatio: 2
 	};
-	public alcmwLegend = false;
+	public alcmwLegend = true;
 	public alcmwType = 'line';
 	public alcmwPlugins = [];
-
 
 	// Finished product Weight
 	public alcfpData: ChartDataSets[] = [
 		{
-			data: [ 26, 30, 12, 24, 45, 32, 10 ],
-			label: 'Finished Product',
-			backgroundColor: 'rgba(0, 213, 142, 0.4)',
-			borderColor: '#00d58e',
-			pointBackgroundColor: '#00d58e',
-			pointHoverBorderColor: '#00d58e'
+			data: [],
+			label: 'Finished Product Weight',
+			backgroundColor: 'rgba(255, 170, 0, 0.4)',
+			borderColor: '#ffaa00',
+			pointBackgroundColor: '#ffaa00',
+			pointHoverBorderColor: '#ffaa00'
 		}
 	];
 	public alcfpLabels: Label[];
@@ -98,20 +91,19 @@ export class AutomatonComponent implements OnInit {
 		maintainAspectRatio: false,
 		aspectRatio: 2
 	};
-	public alcfpLegend = false;
+	public alcfpLegend = true;
 	public alcfpType = 'line';
 	public alcfpPlugins = [];
-
 
 	// PH
 	public alcphData: ChartDataSets[] = [
 		{
-			data: [ 26, 30, 12, 24, 45, 32, 10 ],
-			label: 'Finished Product',
-			backgroundColor: 'rgba(0, 213, 142, 0.4)',
-			borderColor: '#00d58e',
-			pointBackgroundColor: '#00d58e',
-			pointHoverBorderColor: '#00d58e'
+			data: [],
+			label: 'PH',
+			backgroundColor: 'rgba(255, 61, 113, 0.4)',
+			borderColor: '#ff3d71',
+			pointBackgroundColor: '#ff3d71',
+			pointHoverBorderColor: '#ff3d71'
 		}
 	];
 	public alcphLabels: Label[];
@@ -120,20 +112,19 @@ export class AutomatonComponent implements OnInit {
 		maintainAspectRatio: false,
 		aspectRatio: 2
 	};
-	public alcphLegend = false;
+	public alcphLegend = true;
 	public alcphType = 'line';
 	public alcphPlugins = [];
-
 
 	// K+
 	public alckData: ChartDataSets[] = [
 		{
-			data: [ 26, 30, 12, 24, 45, 32, 10 ],
-			label: 'Finished Product',
-			backgroundColor: 'rgba(0, 213, 142, 0.4)',
-			borderColor: '#00d58e',
-			pointBackgroundColor: '#00d58e',
-			pointHoverBorderColor: '#00d58e'
+			data: [],
+			label: 'K+',
+			backgroundColor: 'rgba(171, 15, 242, 0.4)',
+			borderColor: '#ab0ff2',
+			pointBackgroundColor: '#ab0ff2',
+			pointHoverBorderColor: '#ab0ff2'
 		}
 	];
 	public alckLabels: Label[];
@@ -142,20 +133,19 @@ export class AutomatonComponent implements OnInit {
 		maintainAspectRatio: false,
 		aspectRatio: 2
 	};
-	public alckLegend = false;
+	public alckLegend = true;
 	public alckType = 'line';
 	public alckPlugins = [];
-
 
 	// NaCl
 	public alcnaclData: ChartDataSets[] = [
 		{
-			data: [ 26, 30, 12, 24, 45, 32, 10 ],
-			label: 'Finished Product',
-			backgroundColor: 'rgba(0, 213, 142, 0.4)',
-			borderColor: '#00d58e',
-			pointBackgroundColor: '#00d58e',
-			pointHoverBorderColor: '#00d58e'
+			data: [],
+			label: 'NaCl',
+			backgroundColor: 'rgba(52, 46, 173, 0.4)',
+			borderColor: '#342ead',
+			pointBackgroundColor: '#342ead',
+			pointHoverBorderColor: '#342ead'
 		}
 	];
 	public alcnaclLabels: Label[];
@@ -164,20 +154,19 @@ export class AutomatonComponent implements OnInit {
 		maintainAspectRatio: false,
 		aspectRatio: 2
 	};
-	public alcnaclLegend = false;
+	public alcnaclLegend = true;
 	public alcnaclType = 'line';
 	public alcnaclPlugins = [];
-
 
 	// Salmonella
 	public alcsData: ChartDataSets[] = [
 		{
-			data: [ 26, 30, 12, 24, 45, 32, 10 ],
-			label: 'Finished Product',
-			backgroundColor: 'rgba(0, 213, 142, 0.4)',
-			borderColor: '#00d58e',
-			pointBackgroundColor: '#00d58e',
-			pointHoverBorderColor: '#00d58e'
+			data: [],
+			label: 'Salmonella',
+			backgroundColor: 'rgb(0, 189, 170, 0.4)',
+			borderColor: '#00bdaa',
+			pointBackgroundColor: '#00bdaa',
+			pointHoverBorderColor: '#00bdaa'
 		}
 	];
 	public alcsLabels: Label[];
@@ -186,20 +175,19 @@ export class AutomatonComponent implements OnInit {
 		maintainAspectRatio: false,
 		aspectRatio: 2
 	};
-	public alcsLegend = false;
+	public alcsLegend = true;
 	public alcsType = 'line';
 	public alcsPlugins = [];
-
 
 	// E-Coli
 	public alcecData: ChartDataSets[] = [
 		{
-			data: [ 26, 30, 12, 24, 45, 32, 10 ],
-			label: 'Finished Product',
-			backgroundColor: 'rgba(0, 213, 142, 0.4)',
-			borderColor: '#00d58e',
-			pointBackgroundColor: '#00d58e',
-			pointHoverBorderColor: '#00d58e'
+			data: [],
+			label: 'E-Coli',
+			backgroundColor: 'rgba(181, 144, 202, 0.4)',
+			borderColor: '#b590ca',
+			pointBackgroundColor: '#b590ca',
+			pointHoverBorderColor: '#b590ca'
 		}
 	];
 	public alcecLabels: Label[];
@@ -208,20 +196,19 @@ export class AutomatonComponent implements OnInit {
 		maintainAspectRatio: false,
 		aspectRatio: 2
 	};
-	public alcecLegend = false;
+	public alcecLegend = true;
 	public alcecType = 'line';
 	public alcecPlugins = [];
-
 
 	// Listeria
 	public alclData: ChartDataSets[] = [
 		{
-			data: [ 26, 30, 12, 24, 45, 32, 10 ],
-			label: 'Finished Product',
-			backgroundColor: 'rgba(0, 213, 142, 0.4)',
-			borderColor: '#00d58e',
-			pointBackgroundColor: '#00d58e',
-			pointHoverBorderColor: '#00d58e'
+			data: [],
+			label: 'Listeria',
+			backgroundColor: 'rgb(253, 46, 179, 0.4)',
+			borderColor: '#fd2eb3',
+			pointBackgroundColor: '#fd2eb3',
+			pointHoverBorderColor: '#fd2eb3'
 		}
 	];
 	public alclLabels: Label[];
@@ -230,67 +217,66 @@ export class AutomatonComponent implements OnInit {
 		maintainAspectRatio: false,
 		aspectRatio: 2
 	};
-	public alclLegend = false;
+	public alclLegend = true;
 	public alclType = 'line';
 	public alclPlugins = [];
 
-  ngOnInit(): void {
+	ngOnInit(): void {
+		// Retrieve Data
+		this.automatonService.getData(1, 3).then((data) => {
+			// Tank Temperature
+			let alctt = data.alctt;
+			this.alcttLabels = alctt.labels;
+			this.alcttData[0].data = alctt.data;
 
-	// Retrieve Data
-	let data = this.automatonService.getData(1, 5);
+			// Main Temperature
+			let alcmt = data.alcmt;
+			this.alcmtLabels = alcmt.labels;
+			this.alcmtData[0].data = alcmt.data;
 
-	// Tank Temperature
-	let alctt = data.alctt;
-    this.alcttLabels = alctt.labels;
-    this.alcttData[0].data = alctt.data;
-    
-	// Main Temperature
-	let alcmt = data.alcmt;
-    this.alcmtLabels = alcmt.labels;
-	this.alcmtData[0].data = alcmt.data;
+			// Milk Weight
+			let alcmw = data.alcmw;
+			this.alcmwLabels = alcmw.labels;
+			this.alcmwData[0].data = alcmw.data;
 
-	// Milk Weight 
-	let alcmw = data.alcmw;
-    this.alcmwLabels = alcmw.labels;
-	this.alcmwData[0].data = alcmw.data;
+			// Finished Products
+			let alcfp = data.alcfp;
+			this.alcfpLabels = alcfp.labels;
+			this.alcfpData[0].data = alcfp.data;
 
-	// Finished Products
-	let alcfp = data.alcfp;
-    this.alcfpLabels = alcfp.labels;
-	this.alcfpData[0].data = alcfp.data;
+			// PH Level
+			let alcph = data.alcph;
+			this.alcphLabels = alcph.labels;
+			this.alcphData[0].data = alcph.data;
 
-	// PH Level
-	let alcph = data.alcph;
-    this.alcphLabels = alcph.labels;
-	this.alcphData[0].data = alcph.data;
+			// K+
+			let alck = data.alck;
+			this.alckLabels = alck.labels;
+			this.alckData[0].data = alck.data;
 
-	// K+
-	let alck = data.alck;
-    this.alckLabels = alck.labels;
-	this.alckData[0].data = alck.data;
+			// NaCl
+			let alcnacl = data.alcnacl;
+			this.alcnaclLabels = alcnacl.labels;
+			this.alcnaclData[0].data = alcnacl.data;
 
-	// NaCl
-	let alcnacl = data.alcnacl;
-    this.alcnaclLabels = alcnacl.labels;
-	this.alcnaclData[0].data = alcnacl.data;
+			// Salmonella
+			let alcs = data.alcs;
+			this.alcsLabels = alcs.labels;
+			this.alcsData[0].data = alcs.data;
 
-	// Salmonella
-	let alcs = data.alcs;
-    this.alcsLabels = alcs.labels;
-	this.alcsData[0].data = alcs.data;
+			// E-Coli
+			let alcec = data.alcec;
+			this.alcecLabels = alcec.labels;
+			this.alcecData[0].data = alcec.data;
 
-	// E-Coli
-	let alcec = data.alcec;
-    this.alcecLabels = alcec.labels;
-	this.alcecData[0].data = alcec.data;
+			// Listeria
+			let alcl = data.alcl;
+			this.alclLabels = alcl.labels;
+			this.alclData[0].data = alcl.data;
+		});
 
-	// Listeria
-	let alcl = data.alcl;
-    this.alclLabels = alcl.labels;
-	this.alclData[0].data = alcl.data;
-
-	// this.automatonService.getData(1, 3).then((value) => {
-	// 	console.log(value);
-	// });
-  }
+		// this.automatonService.getData(1, 3).then((value) => {
+		// 	console.log(value);
+		// });
+	}
 }
