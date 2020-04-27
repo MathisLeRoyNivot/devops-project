@@ -24,7 +24,7 @@ ENV REMOVE_DEPS build-essential \
     wget
 
 RUN apt update && apt install --no-install-recommends --no-install-suggests -y ${BUILD_DEPS} \
-    && wget -O- https://www.python.org/ftp/python/${PYTHON_VERSION}/Python-${PYTHON_VERSION}${ALPHA_VERSION}.tgz | tar xz \
+    && wget -O- https://www.python.org/ftp/python/3.8.0/Python-3.8.0a1.tgz | tar xz \
     && cd Python-${PYTHON_VERSION}${ALPHA_VERSION}/ \
     && ./configure \
         --without-ensurepip \
@@ -68,7 +68,6 @@ RUN apt update && apt install --no-install-recommends --no-install-suggests -y $
     && apt remove --autoremove --purge -y ${REMOVE_DEPS} \
     && rm -rf /var/lib/apt/lists/*
 
-RUN apt list --upgradable
 RUN pip install --upgrade pip
 RUN apt-get update -y
 
@@ -78,20 +77,5 @@ COPY . .
 
 RUN pip install -r /usr/src/devops-project-prod/requirements.txt
 
-#Install Cron
-RUN apt-get -y install cron -y
-
-# Add crontab file in the cron directory
-ADD crontab /etc/cron.d/crontab
-
-# Give execution rights on the cron job
-RUN chmod 644 /etc/cron.d/crontab
-RUN chmod +x /etc/cron.d/crontab
+ENTRYPOINT ["/usr/local/bin/python3","/usr/src/devops-project-prod/connector.py","3000"]
 CMD tail -f /dev/null
-
-# Create the log file to be able to run tail
-RUN touch /var/log/cron.log
-
-# RUN crontab
-RUN crontab /etc/cron.d/crontab
-ENTRYPOINT ["cron", "-f"]

@@ -159,9 +159,11 @@ def generateRandomDataFloat(min, max):
 
 
 async def message(msg):
-    async with websockets.connect(f"ws://localhost:{SERVER_PORT}") as socket:
+    uri = "ws://devops-project_connector_1:3000"
+    async with websockets.connect(uri) as socket:
         await socket.send(msg)
         print(await socket.recv())
+
 
 def main():
 
@@ -209,10 +211,12 @@ def main():
     print("File exported with name : " + json_file_name)
 
     # Encode generated data before sending it 
-    data_to_send = json.dumps(generated_data).encode()
+    msg = json.dumps(generated_data).encode()
+    print (msg)
     # Send encoded generated data throught socket
-    asyncio.get_event_loop().run_until_complete(message(data_to_send))
+    asyncio.get_event_loop().run_until_complete(message(msg))
 
 
 if __name__ == "__main__":
     main()
+
