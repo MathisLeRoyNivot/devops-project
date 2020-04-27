@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ChartOptions, ChartType, ChartDataSets, RadialChartOptions } from 'chart.js';
 import { Color, Label, SingleDataSet } from 'ng2-charts';
 import { AutomatonService } from 'src/app/services/automaton.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
 	selector: 'app-automaton',
@@ -9,7 +10,13 @@ import { AutomatonService } from 'src/app/services/automaton.service';
 	styleUrls: [ './automaton.component.scss' ]
 })
 export class AutomatonComponent implements OnInit {
-	constructor(private automatonService: AutomatonService) {}
+
+	unit_id: any;
+	automaton_id: any;
+
+	constructor(
+		private automatonService: AutomatonService,
+		private _Activatedroute:ActivatedRoute) {}
 
 	// Tank Temperature
 	public alcttData: ChartDataSets[] = [
@@ -222,8 +229,17 @@ export class AutomatonComponent implements OnInit {
 	public alclPlugins = [];
 
 	ngOnInit(): void {
+		// Get Params
+		this._Activatedroute.paramMap.subscribe(params => { 
+			this.unit_id= params.get('unit_id'); 
+			this.automaton_id= params.get('automaton_id'); 
+		});
+
+		console.log(this.unit_id);
+		console.log(this.automaton_id);
+
 		// Retrieve Data
-		this.automatonService.getData(1, 3).then((data) => {
+		this.automatonService.getData(this.unit_id, this.automaton_id).then((data) => {
 			// Tank Temperature
 			let alctt = data.alctt;
 			this.alcttLabels = alctt.labels;
@@ -274,9 +290,5 @@ export class AutomatonComponent implements OnInit {
 			this.alclLabels = alcl.labels;
 			this.alclData[0].data = alcl.data;
 		});
-
-		// this.automatonService.getData(1, 3).then((value) => {
-		// 	console.log(value);
-		// });
 	}
 }
