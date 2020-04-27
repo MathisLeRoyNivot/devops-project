@@ -16,7 +16,6 @@ export class LoginService {
 
 		if (username && password) {
 			// Call to API
-			console.log(username);
 			this.http.post(url, credentials).subscribe(
 				(data) => {
 					if (data.hasOwnProperty('access_token')) {

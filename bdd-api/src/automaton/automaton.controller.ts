@@ -9,7 +9,15 @@ export class AutomatonController {
 
     @Get(':unit_id/:automaton_id')
     getAutomaton(@Param() params) {
+        this.automatonService.getData(params.unit_id, params.automaton_id).then((value) => {
+            console.log(value);
+        });
         return this.automatonService.getData(params.unit_id, params.automaton_id);
+    }
+
+    @Get('')
+    getAutomatons() {
+        return this.automatonService.getAutomatons();
     }
 
     // @Post()

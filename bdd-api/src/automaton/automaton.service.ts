@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Repository, getRepository } from 'typeorm';
 import { Data } from '../data/data.entity';
 
 @Injectable()
@@ -12,9 +12,9 @@ export class AutomatonService {
         return await this.dataRepository.find();
     }
 
-    async getData(unit_id: number, automaton_id): Promise<Data[]> {
+    async getData(unit_id: number, automaton_id: number): Promise<Data[]> {
         return await this.dataRepository.find({
-            where: [{ "unit_id": unit_id, "automaton_id": automaton_id}]
+            where: { unit_num: unit_id, automaton_num: automaton_id}
         });
     }
 }
