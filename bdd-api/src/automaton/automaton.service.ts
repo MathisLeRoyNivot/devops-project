@@ -8,10 +8,6 @@ export class AutomatonService {
 
     constructor(@InjectRepository(Data) private dataRepository: Repository<Data>) { }
 
-    async getAutomatons(): Promise<Data[]> {
-        return await this.dataRepository.find();
-    }
-
     async getData(unit_id: number, automaton_id: number): Promise<Data[]> {
         return await this.dataRepository.find({
             where: { unit_num: unit_id, automaton_num: automaton_id}

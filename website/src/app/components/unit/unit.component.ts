@@ -20,8 +20,6 @@ export class UnitComponent implements OnInit {
 
 		this._Activatedroute.paramMap.subscribe(params => { 
 			this.unit_id= params.get('unit_id'); 
-			console.log(this.unit_id);
-			console.log(params);
 		});
 	}
 }
