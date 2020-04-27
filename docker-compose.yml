@@ -9,35 +9,68 @@ services:
     ports:
       - "3000:3000"
 
-  automate1: 
+  automate1:
     # Build dockerfile in folder plc-python
-    build: ./production-unite
-    # Echo command writing in the script.sh file launched by our crontab
-    command: /bin/echo "/usr/local/bin/python3 /usr/src/devops-project-prod/main.py 1 10 3000 >> /var/log/cron.log 2>&1" >> script.sh
+    build: 
+      context: ./production-unite
+      # Python script arguments
+      args:
+        var1: 1
+        var2: 10
+        var3: 3000
+    command: tail -f /dev/null
     ports:
       - "3001:3001"
 
-  automate2: 
-    build: ./production-unite
-    command: /bin/echo "/usr/local/bin/python3 /usr/src/devops-project-prod/main.py 2 10 3000 >> /var/log/cron.log 2>&1" >> script.sh
+  automate2:
+    # Build dockerfile in folder plc-python
+    build: 
+      context: ./production-unite
+      # Python script arguments
+      args:
+        var1: 2
+        var2: 10
+        var3: 3000
+    command: tail -f /dev/null
     ports:
       - "3002:3002"
 
-  automate3: 
-    build: ./production-unite
-    command: /bin/echo "/usr/local/bin/python3 /usr/src/devops-project-prod/main.py 3 10 3000 >> /var/log/cron.log 2>&1" >> script.sh
+  automate3:
+    # Build dockerfile in folder plc-python
+    build: 
+      context: ./production-unite
+      # Python script arguments
+      args:
+        var1: 3
+        var2: 10
+        var3: 3000
+    command: tail -f /dev/null
     ports:
       - "3003:3003"
 
-  automate4: 
-    build: ./production-unite
-    command: /bin/echo "/usr/local/bin/python3 /usr/src/devops-project-prod/main.py 4 10 3000 >> /var/log/cron.log 2>&1" >> script.sh
+  automate4:
+    # Build dockerfile in folder plc-python
+    build: 
+      context: ./production-unite
+      # Python script arguments
+      args:
+        var1: 4
+        var2: 10
+        var3: 3000
+    command: tail -f /dev/null
     ports:
       - "3004:3004"
-
-  automate5: 
-    build: ./production-unite
-    command: /bin/echo "/usr/local/bin/python3 /usr/src/devops-project-prod/main.py 5 10 3000 >> /var/log/cron.log 2>&1" >> script.sh
+      
+  automate5:
+    # Build dockerfile in folder plc-python
+    build: 
+      context: ./production-unite
+      # Python script arguments
+      args:
+        var1: 5
+        var2: 10
+        var3: 3000
+    command: tail -f /dev/null
     ports:
       - "3005:3005"
 

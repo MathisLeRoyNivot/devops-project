@@ -81,17 +81,23 @@ RUN pip install -r /usr/src/devops-project-prod/requirements.txt
 #Install Cron
 RUN apt-get -y install cron -y
 
+ARG var1
+ARG var2
+ARG var3
+
+RUN echo "/usr/local/bin/python3 /usr/src/devops-project-prod/main.py $var1 $var2 $var3 >> /var/log/cron.log 2>&1" >> script.sh
 # Add crontab file in the cron directory
 ADD crontab /etc/cron.d/crontab
 
+RUN chmod +x /usr/src/devops-project-prod/script.sh
 # Give execution rights on the cron job
 RUN chmod 644 /etc/cron.d/crontab
 RUN chmod +x /etc/cron.d/crontab
-CMD tail -f /dev/null
 
 # Create the log file to be able to run tail
 RUN touch /var/log/cron.log
 
 # RUN crontab
 RUN crontab /etc/cron.d/crontab
-ENTRYPOINT ["cron", "-f"]
+ENTRYPOINT ["cron","-f"]
+CMD tail -f /dev/null
