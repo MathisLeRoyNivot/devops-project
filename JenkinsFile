@@ -1,0 +1,20 @@
+pipeline {
+    agent none 
+    stages {
+        stage('Checkout'){
+          checkout scm
+        }
+        stage('Build') {
+            agent { docker 'tmaier/docker-compose:latest' } 
+            steps {
+                sh 'docker-compose build'
+            }
+        }
+        stage('deploy') {
+            agent { docker 'tmaier/docker-compose:latest' } 
+            steps {
+                sh 'ssh deploy@xxxxx.xxxxx.com running/xxxxxxx/dockerRun.sh'
+                sh 'docker-compose up'
+            }
+        }
+    }
