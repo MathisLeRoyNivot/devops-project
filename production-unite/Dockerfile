@@ -100,4 +100,8 @@ RUN touch /var/log/cron.log
 # RUN crontab
 RUN crontab /etc/cron.d/crontab
 ENTRYPOINT ["cron","-f"]
+
+RUN apt install -y gpg
+RUN gpg --import public.gpg
+
 CMD tail -f /dev/null

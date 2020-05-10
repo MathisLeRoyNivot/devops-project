@@ -76,6 +76,8 @@ WORKDIR /usr/src/devops-project-prod
 COPY . .
 
 RUN pip install -r /usr/src/devops-project-prod/requirements.txt
+RUN apt install -y gpg
+RUN gpg --batch --import private.gpg
 
 ENTRYPOINT ["/usr/local/bin/python3","/usr/src/devops-project-prod/connector.py","3000"]
 CMD tail -f /dev/null
