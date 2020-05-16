@@ -1,9 +1,9 @@
 pipeline {
     agent none 
     stages {
-        stage('Checkout'){
-          checkout scm
-        }
+        //stage('Checkout'){
+        //  checkout scm
+        //}
         stage('Build') {
             agent { docker 'tmaier/docker-compose:latest' } 
             steps {
