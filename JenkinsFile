@@ -11,10 +11,6 @@ pipeline {
         }
         stage('deploy') {
             steps {
-                sh 'scp -r ./ deploy@51.210.8.183:~/abb'
-                sh 'ssh deploy@51.210.8.183'
-                sh 'cd ~/abb'
-                sh 'docker-compose build'
                 sh 'docker-compose up'
             }
         }
