@@ -5,13 +5,21 @@ pipeline {
         //  checkout scm
         //}
         stage('Build') {
-            agent none
+            agent { 
+                docker {
+                    image 'tmaier/docker-compose:latest'
+                } 
+            } 
             steps {
                 sh 'docker-compose build'
             }
         }
         stage('deploy') {
-            agent none 
+            agent { 
+                docker {
+                    image 'tmaier/docker-compose:latest'
+                } 
+            } 
             steps {
                 sh 'scp -r ./ deploy@51.210.8.183:~/abb'
                 sh 'ssh deploy@51.210.8.183'
