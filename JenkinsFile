@@ -7,7 +7,7 @@ pipeline {
         stage('Build') {
             agent { docker 'tmaier/docker-compose:latest' } 
             steps {
-                sh 'docker-compose build'
+                sh 'sudo docker-compose build'
             }
         }
         stage('deploy') {
@@ -16,8 +16,8 @@ pipeline {
                 sh 'scp -r ./ deploy@51.210.8.183:~/abb'
                 sh 'ssh deploy@51.210.8.183'
                 sh 'cd ~/abb'
-                sh 'docker-compose build'
-                sh 'docker-compose up'
+                sh 'sudo docker-compose build'
+                sh 'sudo docker-compose up'
             }
         }
     }
