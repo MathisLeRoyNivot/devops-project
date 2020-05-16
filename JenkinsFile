@@ -13,7 +13,10 @@ pipeline {
         stage('deploy') {
             agent { docker 'tmaier/docker-compose:latest' } 
             steps {
-                sh 'ssh deploy@xxxxx.xxxxx.com running/xxxxxxx/dockerRun.sh'
+                sh 'scp -r ./ deploy@51.210.8.183:~/abb'
+                sh 'ssh deploy@51.210.8.183'
+                sh 'cd ~/abb'
+                sh 'docker-compose build'
                 sh 'docker-compose up'
             }
         }
