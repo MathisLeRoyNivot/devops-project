@@ -1,5 +1,8 @@
 pipeline {
-    agent none 
+    agent {
+        image "tmaier/docker-compose"
+        label 'compose'
+    } 
     stages {
         //stage('Checkout'){
         //  checkout scm
