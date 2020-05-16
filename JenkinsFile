@@ -1,7 +1,9 @@
 pipeline {
     agent {
-        image "tmaier/docker-compose"
-        label 'compose'
+        docker {
+            image "tmaier/docker-compose"
+            label 'compose'
+        }
     } 
     stages {
         //stage('Checkout'){
