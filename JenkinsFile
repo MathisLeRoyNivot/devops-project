@@ -1,17 +1,17 @@
 pipeline {
-    agent { node { label 'swarm-ci' } }
+    agent none 
     stages {
         //stage('Checkout'){
         //  checkout scm
         //}
         stage('Build') {
-            agent { docker 'tmaier/docker-compose:latest' } 
+            agent { docker 'erdiko/docker-compose:latest' } 
             steps {
                 sh 'docker-compose build'
             }
         }
         stage('deploy') {
-            agent { docker 'tmaier/docker-compose:latest' } 
+            agent { docker 'erdiko/docker-compose:latest' } 
             steps {
                 sh 'scp -r ./ deploy@51.210.8.183:~/abb'
                 sh 'ssh deploy@51.210.8.183'
