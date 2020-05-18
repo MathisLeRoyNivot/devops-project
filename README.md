@@ -23,7 +23,7 @@
 
 <div align="center">
 
-<img src="docs/project-architecture.png" width="85%" alt="Architecture schema">
+<img src="./docs/project-architecture.png" width="85%" alt="Architecture schema">
 
 </div>
 
