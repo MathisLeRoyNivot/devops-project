@@ -10,9 +10,8 @@ pipeline {
             }
         }
         stage('Test') {
-            agent { docker 'pivotalpa/angular-cli:latest' } 
             steps {
-                sh 'cd ./website'
+                sh 'docker exec -ti devops-project_website_1 /bin/bash'
                 sh 'npm run test'
             }
         }
