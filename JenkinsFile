@@ -9,6 +9,12 @@ pipeline {
                 sh 'docker-compose build'
             }
         }
+        stage('Test') {
+            agent { docker 'pivotalpa/angular-cli:latest' } 
+            steps {
+                sh 'docker-compose build'
+            }
+        }
         stage('deploy') {
             steps {
                 sh 'docker-compose up'
