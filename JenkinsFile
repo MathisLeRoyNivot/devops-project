@@ -10,9 +10,15 @@ pipeline {
             }
         }
         stage('Test') {
+            agent {
+                dockerfile {
+                dir 'TEST'
+                filename 'dockerfile'
+                label 'docker'
+            }
             steps {
                 sh 'docker-compose up -d website'
-                sh 'docker exec githubpipeline_website_1 /bin/bash -c "npm run test"'
+                sh 'docker exec githubpipeline_website_1 npm run test'
             }
         }
         stage('deploy') {
