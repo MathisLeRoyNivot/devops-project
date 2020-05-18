@@ -12,7 +12,8 @@ pipeline {
         stage('Test') {
             steps {
                 sh 'docker-compose up -d website'
-                sh 'docker exec githubpipeline_database_1 /bin/bash ls'
+                sh 'docker exec githubpipeline_database_1'
+                sh '/bin/bash -c "npm run test"'
             }
         }
         stage('deploy') {
