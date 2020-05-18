@@ -12,7 +12,8 @@ pipeline {
         stage('Test') {
             agent { docker 'pivotalpa/angular-cli:latest' } 
             steps {
-                sh 'docker-compose build'
+                sh 'cd ./website'
+                sh 'npm run test'
             }
         }
         stage('deploy') {
