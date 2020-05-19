@@ -37,7 +37,7 @@ async def response(websockets, path):
             file=f,
             always_trust=True, 
             passphrase=recipient_passphrase,
-            output='decrypted.txt',
+            output=output_file,
         )
     print(status.ok)
     print(status.status)
