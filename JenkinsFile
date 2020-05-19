@@ -9,11 +9,6 @@ pipeline {
                 sh 'docker-compose build'
             }
         }
-        stage('Test') {
-            steps {
-                sh 'docker-compose exec -T githubpipeline_website npm run test'
-            }
-        }
         stage('deploy') {
             steps {
                 sh 'docker-compose up'
