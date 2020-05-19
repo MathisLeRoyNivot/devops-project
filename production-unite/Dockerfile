@@ -69,7 +69,7 @@ RUN apt update && apt install --no-install-recommends --no-install-suggests -y $
     && rm -rf /var/lib/apt/lists/*
 
 RUN apt list --upgradable
-RUN pip install --upgrade pip
+RUN /usr/local/bin/python -m pip install --upgrade pip
 RUN apt-get update -y
 
 # Copy script and crontab
@@ -102,6 +102,7 @@ RUN crontab /etc/cron.d/crontab
 ENTRYPOINT ["cron","-f"]
 
 RUN apt install -y gpg
-RUN gpg --import public.gpg
+RUN gpg --always-trust --import public.gpg
 
+RUN pip install python-gnupg
 CMD tail -f /dev/null

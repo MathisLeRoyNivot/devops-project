@@ -3,6 +3,8 @@ import os
 import json
 import random
 import websockets
+import gnupg
+from pprint import pprint
 from datetime import datetime
 from sys import argv
 
@@ -210,13 +212,26 @@ def main():
 
     print("File exported with name : " + json_file_name)
 
-    # Encode generated data before sending it 
-    msg = json.dumps(generated_data).encode()
-    print (msg)
+    file="/root/"+json_file_name
+
+    with open(file, 'rb') as f:
+        gpg = gnupg.GPG(gnupghome="/root/.gnupg")
+        output_file= json_file_name +".gpg"
+        status = gpg.encrypt_file(
+            file=f,
+            recipients=['devops@gmail.com'],
+            output=output_file,
+        )
+
+    print("ok: ", status.ok)
+    print("status: ", status.status)
+    print("stderr: ", status.stderr)
+
+    with open(output_file, 'r') as content_file:
+        content = content_file.read()
     # Send encoded generated data throught socket
-    asyncio.get_event_loop().run_until_complete(message(msg))
+    asyncio.get_event_loop().run_until_complete(message(content))
 
 
 if __name__ == "__main__":
     main()
-

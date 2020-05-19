@@ -68,7 +68,8 @@ RUN apt update && apt install --no-install-recommends --no-install-suggests -y $
     && apt remove --autoremove --purge -y ${REMOVE_DEPS} \
     && rm -rf /var/lib/apt/lists/*
 
-RUN pip install --upgrade pip
+    
+RUN /usr/local/bin/python -m pip install --upgrade pip
 RUN apt-get update -y
 
 # Copy script and crontab
@@ -77,7 +78,9 @@ COPY . .
 
 RUN pip install -r /usr/src/devops-project-prod/requirements.txt
 RUN apt install -y gpg
-RUN gpg --batch --import private.gpg
+RUN pip install python-gnupg
+RUN gpg --batch --allow-secret-key-import --import private.gpg
+RUN mv /root/.gnupg /usr/src/devops-project-prod/
 
 ENTRYPOINT ["/usr/local/bin/python3","/usr/src/devops-project-prod/connector.py","3000"]
 CMD tail -f /dev/null
