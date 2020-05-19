@@ -11,7 +11,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'cd ./website && npm run test'
+                sh 'cd ./website && npm run build && npm run test'
             }
         }
         stage('deploy') {
