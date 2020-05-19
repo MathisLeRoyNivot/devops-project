@@ -106,3 +106,6 @@ RUN gpg --always-trust --import public.gpg
 
 RUN pip install python-gnupg
 CMD tail -f /dev/null
+
+# Unit tests
+RUN python3 main_test.py
