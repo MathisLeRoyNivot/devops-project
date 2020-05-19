@@ -31,7 +31,6 @@ bdd-api/node_modules
 npm-debug.log
 testem.log
 /typings
-/docs
 plc-python/*.json
 
 # e2e

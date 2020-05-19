@@ -29,6 +29,8 @@ async def response(websockets, path):
     file.write(data)
     file.close()
 
+    output_file = "decrypted_data.txt"
+
     with open(file_name, 'rb') as f:
         recipient_passphrase = "P@ssw0rd"
         status = gpg.decrypt_file(
@@ -47,7 +49,10 @@ async def response(websockets, path):
     logger.debug(f'stderr : {status.stderr}')
 
     if status.ok:
-        decoded_data = json.loads(status)
+        with open (output_file, "r") as decoded_file:
+            raw_data = decoded_file.read()
+
+        decoded_data = json.loads(raw_data)
         await websockets.send("Data received ✅")
 
         for row in decoded_data:
