@@ -46,4 +46,7 @@ export class Data {
 
     @Column('timestamp') 
     created_at: Date;
+
+    @Column('timestamp') 
+    inserted_at: Date;
 }

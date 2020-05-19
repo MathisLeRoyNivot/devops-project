@@ -229,10 +229,9 @@ def main():
             recipients=['devops@gmail.com'],
             output=output_file,
         )
-
-    print("ok: ", status.ok)
-    print("status: ", status.status)
-    print("stderr: ", status.stderr)
+    print(f"ok: {status.ok}")
+    print(f"status: {status.status}")
+    print(f"stderr: {status.stderr}")
 
     with open(output_file, 'rb') as content_file:
         content = content_file.read()

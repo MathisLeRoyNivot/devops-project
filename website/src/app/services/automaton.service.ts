@@ -61,7 +61,7 @@ export class AutomatonService {
 				data.forEach(automaton => {
 					// Format Date
 					rawDate = new Date(automaton.created_at);
-					formatDate = rawDate.getHours() + "H" + rawDate.getMinutes();
+					formatDate = `${rawDate.getHours()}H${rawDate.getMinutes()}`;
 					this.results.alctt.data.push(automaton.tank_temp);
 					this.results.alctt.labels.push(formatDate);
 					this.results.alcmt.data.push(automaton.outside_temp);
@@ -81,7 +81,6 @@ export class AutomatonService {
 					this.results.alcec.data.push(automaton.e_coli_lvl);
 					this.results.alcec.labels.push(formatDate);
 					this.results.alcl.data.push(automaton.listeria_lvl);
-					this.results.alcl.labels.push(formatDate);
 				});
 				console.log(this.results);
 				return this.results;
