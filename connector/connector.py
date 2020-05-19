@@ -29,13 +29,14 @@ async def response(websockets, path):
     file.write(data)
     file.close()
 
-    file_test = open(file_name, "rb")
-
-
-    output_file= "receive_file.json"
-
     with open(file_name, 'rb') as f:
-        status = gpg.decrypt_file(f, passphrase='P@ssw0rd')
+        recipient_passphrase = "P@ssw0rd"
+        status = gpg.decrypt_file(
+            file=f,
+            always_trust=True, 
+            passphrase=recipient_passphrase,
+            output="decrypted.txt",
+        )
     print(f'ok : {status.ok}')
     print(f'status : {status.status}')
     print(f'stderr : {status.stderr}')
@@ -44,8 +45,6 @@ async def response(websockets, path):
     logger.debug(f'ok : {status.ok}')
     logger.debug(f'status : {status.status}')
     logger.debug(f'stderr : {status.stderr}')
-    logger.info(f'data received : {data}')
-    logger.error(f'file content : {file_test.read()}')
 
     if status.ok:
         decoded_data = json.loads(status)
