@@ -40,3 +40,6 @@ plc-python/*.json
 # System Files
 .DS_Store
 Thumbs.db
+
+/production-unite/__pycache__
+/connector/__pycache__
