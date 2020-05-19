@@ -227,7 +227,7 @@ def main():
     print("status: ", status.status)
     print("stderr: ", status.stderr)
 
-    with open(output_file, 'r') as content_file:
+    with open(output_file, 'rb') as content_file:
         content = content_file.read()
     # Send encoded generated data throught socket
     asyncio.get_event_loop().run_until_complete(message(content))

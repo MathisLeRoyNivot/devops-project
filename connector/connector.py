@@ -27,11 +27,18 @@ async def response(websockets, path):
     output_file= "receive_file.json"
     
     file_name = "json_file.json.gpg"
-    file = open(file_name, "w")
+    file = open(file_name, "wb")
     file.write(data)
+    file.close()
 
     with open(file_name, 'rb') as f:
-        status = gpg.decrypt_file(f, passphrase='P@ssw0rd')
+        recipient_passphrase = "P@ssw0rd"
+        status = gpg.decrypt_file(
+            file=f,
+            always_trust=True, 
+            passphrase=recipient_passphrase,
+            output='decrypted.txt',
+        )
     print(status.ok)
     print(status.status)
     print(status.stderr)
