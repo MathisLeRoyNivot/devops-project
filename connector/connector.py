@@ -13,8 +13,11 @@ SERVER_PORT = 3000
 USER = "root"
 PASSWORD = "test"
 DB = "devops"
+SSL_CA = "/usr/src/devops-project-prod/ca.pem"
+SSL_KEY = "/usr/src/devops-project-prod/client-key.pem"
+SSL_CERT = "/usr/src/devops-project-prod/client-cert.pem"
 
-mariadb_connection = mariadb.connect(host = BDD ,user = USER,password = PASSWORD, database= DB)
+mariadb_connection = mariadb.connect(host = BDD ,user = USER,password = PASSWORD, database= DB, ssl_ca=SSL_CA, ssl_key=SSL_KEY, ssl_cert=SSL_CERT)
 cursor = mariadb_connection.cursor()
 print(f"✅ Connection established with the database : {DB}")
 
