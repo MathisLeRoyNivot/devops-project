@@ -221,7 +221,7 @@ def main():
 
     file="/root/"+json_file_name
 
-    with open(file, 'rb') as f:
+    with open(json_file_name, 'rb') as f:
         gpg = gnupg.GPG(gnupghome="/root/.gnupg")
         output_file= json_file_name +".gpg"
         status = gpg.encrypt_file(
