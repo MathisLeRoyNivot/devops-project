@@ -5,7 +5,6 @@ import gnupg
 import logging
 import mysql.connector as mariadb
 from datetime import datetime
-from sys import argv
 
 BDD = "devops-project_database_1"
 HOST = "devops-project_connector_1"

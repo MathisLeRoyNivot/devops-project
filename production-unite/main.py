@@ -1,16 +1,23 @@
+import argparse
 import asyncio
 import os
 import json
 import random
 import websockets
 import gnupg
+import sys
 from pprint import pprint
 from datetime import datetime
-from sys import argv
 
-UNIT_NUM = int(argv[1])
-AUTOMATON_QTY = int(argv[2])
-SERVER_PORT = int(argv[3])
+parser = argparse.ArgumentParser()
+parser.add_argument("unit_num", nargs='?', type=int, default=1, help="Production unit number")
+parser.add_argument("automaton_qty", nargs='?', type=int, default=10, help="Automaton quantity")
+parser.add_argument("server_port", nargs='?', type=int, default=3000, help="Server port")
+args = parser.parse_args()
+
+UNIT_NUM = args.unit_num
+AUTOMATON_QTY = args.automaton_qty
+SERVER_PORT = args.server_port
 generated_data = list()
 
 class UnitProduction:
