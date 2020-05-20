@@ -42,6 +42,22 @@ CREATE TABLE IF NOT EXISTS `devops`.`data` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 COMMIT;
 
+
+-- CREATE USER
+
+-- managing_director
+CREATE USER 'managing_director'@'%' IDENTIFIED BY 'managing_director';
+GRANT ALL PRIVILEGES ON `devops`.* TO `managing_director`@`%`;
+
+-- docker concentrator
+CREATE USER 'docker_concentrator'@'%' IDENTIFIED BY 'docker_concentrator';
+GRANT SELECT, INSERT ON `devops`.* TO `docker_concentrator`@`%`;
+
+-- DataVision
+CREATE USER 'DataVision'@'%' IDENTIFIED BY 'DataVision';
+GRANT SELECT ON `devops`.* TO `DataVision`@`%`;
+
+
 INSERT INTO devops.`data` (unit_num,automaton_num,automaton_type,tank_temp,outside_temp,milk_weight,final_product_weight,ph,potassium,sodium_chlorure_concentration,salmonella_lvl,e_coli_lvl,listeria_lvl,created_at) VALUES 
 (1,1,"0001",3.7,10.7,4046,4029,6.9000001,39,1.29999995,25,37,37,'2020-04-26 14:47:53.0')
 ,(1,2,'0002',2.79999995,8.80000019,4100,3914,6.9000001,41,1.5,26,46,43,'2020-04-26 14:47:53.0')
