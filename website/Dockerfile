@@ -1,15 +1,18 @@
 # Build
-FROM node:12.7-alpine AS build
+FROM atools/chrome-headless:java11-node12-latest AS build
 WORKDIR /usr/src/app
 COPY package.json ./
 RUN npm install
 COPY . .
-RUN npm run build:prod
+RUN npm run build
+RUN npm run test
 
 # Run
 FROM socialengine/nginx-spa
 WORKDIR /usr/share/nginx/html
-# COPY ./nginx.conf /etc/nginx/conf.d/
+COPY ./nginx.conf /etc/nginx/conf.d/default.conf
+COPY ./certificates/ca-cert.pem /etc/nginx/ssl/localhost.pem
+COPY ./certificates/ca-key.pem /etc/nginx/ssl/localhost.key
 # RUN rm -rf /usr/share/nginx/html/*
 # COPY --from=build /usr/src/app/dist/website /usr/share/nginx/html
 RUN rm -rf /app/*

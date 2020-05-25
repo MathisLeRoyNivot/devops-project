@@ -17,7 +17,7 @@ const routes: Routes = [
 	{
 		path: '',
 		redirectTo: 'dashboard',
-		// canActivate: [CanActivateRouteGuard],
+		canActivate: [CanActivateRouteGuard],
 		pathMatch: 'full'
 	},
 	{
@@ -28,19 +28,19 @@ const routes: Routes = [
 	{
 		path: 'dashboard',
 		component: DashboardPage,
-		// canActivate: [CanActivateRouteGuard],
+		canActivate: [CanActivateRouteGuard],
 		pathMatch: 'full'
 	},
 	{
 		path: 'production-units',
 		component: ProductionUnitsPage,
-		// canActivate: [CanActivateRouteGuard],
+		canActivate: [CanActivateRouteGuard],
 		pathMatch: 'full',
 	},
 	{
 		path: 'production-units/:unit_id',
 		component: ProductionUnitsPage,
-		// canActivate: [CanActivateRouteGuard],
+		canActivate: [CanActivateRouteGuard],
 		children: [
 			{
 				path: '',
