@@ -22,7 +22,7 @@ SET time_zone = "+00:00";
 --
 SET GLOBAL innodb_encryption_threads=4;
 SET GLOBAL innodb_encrypt_tables='FORCE';
-SET SESSION innodb_default_encryption_key_id=100;
+SET GLOBAL innodb_default_encryption_key_id=100;
 
 DROP TABLE IF EXISTS `data`;
 CREATE TABLE IF NOT EXISTS `devops`.`data` (
@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `devops`.`data` (
   `listeria_lvl` int(10) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `inserted_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPRESSED ENCRYPTED=YES encryption_key_id = 1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ENCRYPTED=YES encryption_key_id = 1;
 COMMIT;
 
 
