@@ -1,10 +1,11 @@
 # Build
-FROM node:12.7-alpine AS build
+FROM atools/chrome-headless:java11-node12-latest AS build
 WORKDIR /usr/src/app
 COPY package.json ./
 RUN npm install
 COPY . .
-RUN npm run build:prod
+RUN npm run build
+RUN npm run test
 
 # Run
 FROM socialengine/nginx-spa
