@@ -20,6 +20,9 @@ SET time_zone = "+00:00";
 --
 -- Structure de la table `data`
 --
+SET GLOBAL innodb_encryption_threads=4;
+SET GLOBAL innodb_encrypt_tables='FORCE';
+SET GLOBAL innodb_default_encryption_key_id=100;
 
 DROP TABLE IF EXISTS `data`;
 CREATE TABLE IF NOT EXISTS `devops`.`data` (
@@ -39,8 +42,24 @@ CREATE TABLE IF NOT EXISTS `devops`.`data` (
   `listeria_lvl` int(10) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `inserted_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ENCRYPTED=YES encryption_key_id = 1;
 COMMIT;
+
+
+-- CREATE USER
+
+-- managing_director
+CREATE USER IF NOT EXISTS 'managing_director'@'%' IDENTIFIED BY 'managing_director' REQUIRE SSL;
+GRANT ALL ON devops.data TO 'managing_director';
+
+-- docker concentrator
+CREATE USER IF NOT EXISTS 'docker_concentrator'@'%' IDENTIFIED BY 'docker_concentrator' REQUIRE SSL;
+GRANT SELECT, INSERT ON devops.data TO 'docker_concentrator'@'%';
+
+-- DataVision
+CREATE USER IF NOT EXISTS 'DataVision'@'%' IDENTIFIED BY 'DataVision' REQUIRE SSL;
+GRANT SELECT ON devops.data TO 'DataVision'@'%';
+
 
 INSERT INTO devops.`data` (unit_num,automaton_num,automaton_type,tank_temp,outside_temp,milk_weight,final_product_weight,ph,potassium,sodium_chlorure_concentration,salmonella_lvl,e_coli_lvl,listeria_lvl,created_at) VALUES 
 (1,1,"0001",3.7,10.7,4046,4029,6.9000001,39,1.29999995,25,37,37,'2020-04-26 14:47:53.0')

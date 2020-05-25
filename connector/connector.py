@@ -9,10 +9,10 @@ from datetime import datetime
 BDD = "devops-project_database_1"
 HOST = "devops-project_connector_1"
 SERVER_PORT = 3000
-USER = "root"
-PASSWORD = "test"
+USER = "docker_concentrator"
+PASSWORD = "docker_concentrator"
 DB = "devops"
-SSL_CA = "/usr/src/devops-project-prod/ca.pem"
+SSL_CA = "/usr/src/devops-project-prod/ca-cert.pem"
 SSL_KEY = "/usr/src/devops-project-prod/client-key.pem"
 SSL_CERT = "/usr/src/devops-project-prod/client-cert.pem"
 

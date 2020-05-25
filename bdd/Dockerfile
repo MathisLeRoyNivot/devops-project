@@ -10,10 +10,8 @@ COPY crontab .
 # Setup the custom configuration
 ADD my.cnf /etc/mysql/my.cnf
 
-# Set various default configuration
-ENV MYSQL_EXPIRE_LOGS_DAYS     10
-ENV MYSQL_MAX_ALLOWED_PACKET   128M
-ENV MYSQL_MAX_CONNECTIONS      30
+COPY . /etc/mysql/
+WORKDIR /etc/mysql/
 
 #Expose port
 EXPOSE 3306
