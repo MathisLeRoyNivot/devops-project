@@ -26,59 +26,6 @@ services:
     ports:
       - "3001:3001"
 
-<<<<<<< HEAD
-  # automate2:
-  #   # Build dockerfile in folder plc-python
-  #   build: 
-  #     context: ./production-unite
-  #     # Python script arguments
-  #     args:
-  #       var1: 2
-  #       var2: 10
-  #       var3: 3000
-  #   command: tail -f /dev/null
-  #   ports:
-  #     - "3002:3002"
-
-  # automate3:
-  #   # Build dockerfile in folder plc-python
-  #   build: 
-  #     context: ./production-unite
-  #     # Python script arguments
-  #     args:
-  #       var1: 3
-  #       var2: 10
-  #       var3: 3000
-  #   command: tail -f /dev/null
-  #   ports:
-  #     - "3003:3003"
-
-  # automate4:
-  #   # Build dockerfile in folder plc-python
-  #   build: 
-  #     context: ./production-unite
-  #     # Python script arguments
-  #     args:
-  #       var1: 4
-  #       var2: 10
-  #       var3: 3000
-  #   command: tail -f /dev/null
-  #   ports:
-  #     - "3004:3004"
-      
-  # automate5:
-  #   # Build dockerfile in folder plc-python
-  #   build: 
-  #     context: ./production-unite
-  #     # Python script arguments
-  #     args:
-  #       var1: 5
-  #       var2: 10
-  #       var3: 3000
-  #   command: tail -f /dev/null
-  #   ports:
-  #     - "3005:3005"
-=======
   automate2:
     # Build dockerfile in folder plc-python
     build: 
@@ -142,7 +89,6 @@ services:
     command: tail -f /dev/null
     ports:
       - "3005:3005"
->>>>>>> develop
 
   database:
     build: ./bdd
