@@ -11,6 +11,8 @@ RUN npm run test
 FROM socialengine/nginx-spa
 WORKDIR /usr/share/nginx/html
 COPY ./nginx.conf /etc/nginx/conf.d/default.conf
+COPY ./certificates/ca-cert.pem /etc/nginx/ssl/localhost.pem
+COPY ./certificates/ca-key.pem /etc/nginx/ssl/localhost.key
 # RUN rm -rf /usr/share/nginx/html/*
 # COPY --from=build /usr/src/app/dist/website /usr/share/nginx/html
 RUN rm -rf /app/*
