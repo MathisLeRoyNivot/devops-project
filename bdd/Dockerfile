@@ -2,6 +2,11 @@
 FROM mariadb:10.4.12 
 COPY dump_data.sql /docker-entrypoint-initdb.d/
 
+# Copy script and crontab
+WORKDIR /usr/src/devops-project-prod
+COPY db_backup.sh .
+COPY crontab .
+
 # Setup the custom configuration
 ADD my.cnf /etc/mysql/my.cnf
 
@@ -12,20 +17,21 @@ ENV MYSQL_MAX_CONNECTIONS      30
 
 #Expose port
 EXPOSE 3306
-# Create the CA certificate
-RUN mkdir /etc/mysql/ssl
-WORKDIR /etc/mysql/ssl
-RUN apt update && apt upgrade -y && apt install openssl -y
-RUN openssl genrsa 2048 > ca-key.pem
-RUN openssl req -new -x509 -nodes -days 365000 -key ca-key.pem -out ca-cert.pem -subj "/C=FR/ST=France/L=Nantes/O=Ynov/CN=devops"
 
-# Create the server certificate
-RUN openssl req -newkey rsa:2048 -days 365000 -nodes -keyout server-key.pem -out server-req.pem -subj "/C=FR/ST=France/L=Nantes/O=Ynov/CN=devops"
-RUN openssl rsa -in server-key.pem -out server-key.pem
-RUN openssl x509 -req -in server-req.pem -days 365000 -CA ca-cert.pem -CAkey ca-key.pem -set_serial 01 -out server-cert.pem 
+#Install Cron
+RUN apt-get -y install cron -y
 
-# Create the client certificate
-RUN openssl req -newkey rsa:2048 -days 365000 -nodes -keyout client-key.pem -out client-req.pem -subj "/C=FR/ST=France/L=Nantes/O=Ynov/CN=devops"
-RUN openssl rsa -in client-key.pem -out client-key.pem
-RUN openssl x509 -req -in client-req.pem -days 365000 -CA ca-cert.pem -CAkey ca-key.pem -set_serial 01 -out client-cert.pem
+# Add crontab file in the cron directory
+ADD crontab /etc/cron.d/crontab
 
+RUN chmod +x /usr/src/devops-project-prod/db_backup.sh
+# Give execution rights on the cron job
+RUN chmod 644 /etc/cron.d/crontab
+RUN chmod +x /etc/cron.d/crontab
+
+# Create the log file to be able to run tail
+RUN touch /var/log/cron.log
+
+# RUN crontab
+RUN crontab /etc/cron.d/crontab
+ENTRYPOINT ["cron","-f"]

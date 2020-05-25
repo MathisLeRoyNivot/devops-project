@@ -1,0 +1,2 @@
+0 * * * * /usr/src/devops-project-prod/db_backup.sh 
+# An empty line is required at the end of this file for a valid cron file.
