@@ -1,8 +1,9 @@
 # Compose file version
-version: '3'
+version: '2'
 services:
   connector:
     build: ./connector
+    container_name: devops-project_connector_1
     depends_on:
       - "database"
     restart: on-failure
@@ -18,10 +19,14 @@ services:
         var1: 1
         var2: 10
         var3: 3000
+    container_name: devops-project_automate1_1
+    depends_on:
+      - "database"
     command: tail -f /dev/null
     ports:
       - "3001:3001"
 
+<<<<<<< HEAD
   # automate2:
   #   # Build dockerfile in folder plc-python
   #   build: 
@@ -73,9 +78,75 @@ services:
   #   command: tail -f /dev/null
   #   ports:
   #     - "3005:3005"
+=======
+  automate2:
+    # Build dockerfile in folder plc-python
+    build: 
+      context: ./production-unite
+      # Python script arguments
+      args:
+        var1: 2
+        var2: 10
+        var3: 3000
+    container_name: devops-project_automate2_1
+    depends_on:
+      - "database"
+    command: tail -f /dev/null
+    ports:
+      - "3002:3002"
+
+  automate3:
+    # Build dockerfile in folder plc-python
+    build: 
+      context: ./production-unite
+      # Python script arguments
+      args:
+        var1: 3
+        var2: 10
+        var3: 3000
+    container_name: devops-project_automate3_1
+    depends_on:
+      - "database"
+    command: tail -f /dev/null
+    ports:
+      - "3003:3003"
+
+  automate4:
+    # Build dockerfile in folder plc-python
+    build: 
+      context: ./production-unite
+      # Python script arguments
+      args:
+        var1: 4
+        var2: 10
+        var3: 3000
+    container_name: devops-project_automate4_1
+    depends_on:
+      - "database"
+    command: tail -f /dev/null
+    ports:
+      - "3004:3004"
+      
+  automate5:
+    # Build dockerfile in folder plc-python
+    build: 
+      context: ./production-unite
+      # Python script arguments
+      args:
+        var1: 5
+        var2: 10
+        var3: 3000
+    container_name: devops-project_automate5_1
+    depends_on:
+      - "database"
+    command: tail -f /dev/null
+    ports:
+      - "3005:3005"
+>>>>>>> develop
 
   database:
     build: ./bdd
+    container_name: devops-project_database_1
     environment:
       - "MYSQL_ALLOW_EMPTY_PASSWORD=false"
       - "MYSQL_ROOT_PASSWORD=test"
@@ -83,12 +154,18 @@ services:
       - "3306:3306"
 
   bdd-api:
+    depends_on:
+      - "database"
     hostname: localhost
     build: ./bdd-api
+    container_name: devops-project_bdd-api_1
     ports:
       - "3333:3333"
 
   website:
+    depends_on:
+      - "database"
     build: ./website
+    container_name: devops-project_website_1
     ports:
         - "80:80"
