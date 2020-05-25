@@ -114,4 +114,4 @@ services:
     build: ./website
     container_name: devops-project_website_1
     ports:
-        - "81:81"
+        - "80:80"
