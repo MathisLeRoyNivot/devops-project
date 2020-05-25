@@ -13,7 +13,7 @@ SERVER_PORT = 3000
 USER = "docker_concentrator"
 PASSWORD = "docker_concentrator"
 DB = "devops"
-SSL_CA = "/usr/src/devops-project-prod/ca.pem"
+SSL_CA = "/usr/src/devops-project-prod/ca-cert.pem"
 SSL_KEY = "/usr/src/devops-project-prod/client-key.pem"
 SSL_CERT = "/usr/src/devops-project-prod/client-cert.pem"
 

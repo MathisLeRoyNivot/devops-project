@@ -20,6 +20,9 @@ SET time_zone = "+00:00";
 --
 -- Structure de la table `data`
 --
+SET GLOBAL innodb_encryption_threads=4;
+SET GLOBAL innodb_encrypt_tables='FORCE';
+SET SESSION innodb_default_encryption_key_id=100;
 
 DROP TABLE IF EXISTS `data`;
 CREATE TABLE IF NOT EXISTS `devops`.`data` (
@@ -39,23 +42,23 @@ CREATE TABLE IF NOT EXISTS `devops`.`data` (
   `listeria_lvl` int(10) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `inserted_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPRESSED ENCRYPTED=YES encryption_key_id = 1;
 COMMIT;
 
 
 -- CREATE USER
 
 -- managing_director
-CREATE USER 'managing_director'@'%' IDENTIFIED BY 'managing_director';
-GRANT ALL PRIVILEGES ON `devops`.* TO `managing_director`@`%`;
+CREATE USER IF NOT EXISTS 'managing_director'@'%' IDENTIFIED BY 'managing_director' REQUIRE SSL;
+GRANT ALL ON devops.data TO 'managing_director';
 
 -- docker concentrator
-CREATE USER 'docker_concentrator'@'%' IDENTIFIED BY 'docker_concentrator';
-GRANT SELECT, INSERT ON `devops`.* TO `docker_concentrator`@`%`;
+CREATE USER IF NOT EXISTS 'docker_concentrator'@'%' IDENTIFIED BY 'docker_concentrator' REQUIRE SSL;
+GRANT SELECT, INSERT ON devops.data TO 'docker_concentrator'@'%';
 
 -- DataVision
-CREATE USER 'DataVision'@'%' IDENTIFIED BY 'DataVision';
-GRANT SELECT ON `devops`.* TO `DataVision`@`%`;
+CREATE USER IF NOT EXISTS 'DataVision'@'%' IDENTIFIED BY 'DataVision' REQUIRE SSL;
+GRANT SELECT ON devops.data TO 'DataVision'@'%';
 
 
 INSERT INTO devops.`data` (unit_num,automaton_num,automaton_type,tank_temp,outside_temp,milk_weight,final_product_weight,ph,potassium,sodium_chlorure_concentration,salmonella_lvl,e_coli_lvl,listeria_lvl,created_at) VALUES 
