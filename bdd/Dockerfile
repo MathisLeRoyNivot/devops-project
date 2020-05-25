@@ -31,4 +31,4 @@ RUN touch /var/log/cron.log
 
 # RUN crontab
 RUN crontab /etc/cron.d/crontab
-ENTRYPOINT ["cron","-f"]
+RUN service cron start
