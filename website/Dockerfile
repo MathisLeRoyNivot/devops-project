@@ -10,7 +10,7 @@ RUN npm run test
 # Run
 FROM socialengine/nginx-spa
 WORKDIR /usr/share/nginx/html
-# COPY ./nginx.conf /etc/nginx/conf.d/
+COPY ./nginx.conf /etc/nginx/conf.d/default.conf
 # RUN rm -rf /usr/share/nginx/html/*
 # COPY --from=build /usr/src/app/dist/website /usr/share/nginx/html
 RUN rm -rf /app/*
