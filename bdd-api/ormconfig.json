@@ -7,5 +7,8 @@
     "database": "devops",
     "entities": ["dist/**/*.entity.js"],
     "synchronize": true,
-    "logging": true
+    "logging": true,
+    "ssl": {
+        "ca": "./secrets/ca-cert.pem"
+      }
 }
