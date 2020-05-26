@@ -62,8 +62,17 @@ docker-compose up
 ## Contributors :computer:
 
 - [Adrien VAUCARD](https://github.com/adrienvaucard "Go to @adrienvaucard's Github")
+
+    -   Web developer
+
 - [Mathis LE ROY-NIVOT](https://github.com/MathisLeRoyNivot "Go to @MathisLeRoyNivot's Github")
+
+    -   Back developer
+
 - [Tanguy POTIER](https://github.com/tanguy85 "Go to @tanguy85's Github")
+
+    -   System and Security Engineer
+
 
 </div>
 

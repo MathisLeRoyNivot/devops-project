@@ -102,10 +102,10 @@ RUN crontab /etc/cron.d/crontab
 ENTRYPOINT ["cron","-f"]
 
 RUN apt install -y gpg
-RUN gpg --always-trust --import public.gpg
-
+RUN gpg --import public.gpg
+CMD for fpr in $(gpg --list-keys --with-colons  | awk -F: '/fpr:/ {print $10}' | sort -u); do  echo -e "5\ny\n" |  gpg --command-fd 0 --expert --edit-key $fpr trust; done
 RUN pip install python-gnupg
-CMD tail -f /dev/null
+# CMD tail -f /dev/null
 
 # Unit tests
 RUN python3 main_test.py
