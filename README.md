@@ -10,12 +10,19 @@
 
 ## Table of content :open_file_folder:
 
+- [**Definition of done**](#done)
 - [**Architecture**](#architecture)
 - [**Installation**](#installation)
     - [**Build project**](#build-project)
     - [**Run project**](#run-project)
 - [**Contributors**](#contributors)
 - [**License**](#license)
+
+<div id="done">
+
+##  Definition of done :white_check_mark:
+
+A feature is determined as done when it is pushed in the develop branch. At first, the feature is developed, then it is pushed into the feature branch. The others members review the feature and merge on develop if it is OK
 
 <div id="architecture">
 
